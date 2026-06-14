@@ -1,0 +1,83 @@
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+}
+.filled-icon {
+  font-variation-settings: 'FILL' 1, 'wght' 300, 'GRAD' 0, 'opsz' 24 !important;
+}
+:root {
+  --color-brand-dark: #303440;
+  --color-brand-light: #AEB9DA;
+}
+body {
+  font-family: 'Onest', sans-serif;
+  background-color: #FFFFFF;
+  color: var(--color-brand-dark);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+.playfair {
+  font-family: 'Playfair Display', serif;
+}
+.font-script {
+  font-family: 'Dancing Script', cursive;
+}
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(174, 185, 218, 0.2);
+}
+.bg-brand-dark {
+  background-color: var(--color-brand-dark);
+}
+.bg-brand-light {
+  background-color: var(--color-brand-light);
+}
+.text-brand-dark {
+  color: var(--color-brand-dark);
+}
+.text-brand-light {
+  color: var(--color-brand-light);
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeIn {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+.transition-luxury {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+::selection {
+  background: var(--color-brand-light);
+  color: var(--color-brand-dark);
+}
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-brand-light);
+  border-radius: 10px;
+}
+
+#map {
+  z-index: 10;
+  position: relative;
+  /* Ensure header covers map if scrolled over */
+}
+nav.fixed {
+  z-index: 60; /* Higher than map */
+}
+
+/* Feedback cards enhancement for contrast and shadow */
+#feedback .bg-white {
+  border: 1px solid var(--color-brand-dark) !important;
+  box-shadow: 0 10px 15px -3px rgba(48, 52, 64, 0.2), 0 4px 6px -2px rgba(48, 52, 64, 0.1) !important;
+}
+#feedback .bg-white:hover {
+  box-shadow: 0 25px 50px -12px rgba(48, 52, 64, 0.6) !important;
+}

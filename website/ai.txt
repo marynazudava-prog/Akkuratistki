@@ -1,0 +1,25 @@
+# ai.txt for Akkuratistki.com
+# Emerging standard for AI agent and LLM interaction
+
+User-agent: *
+Allow: /
+
+# Specifically allow reputable AI services to read and summarize content
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+# Provide context about the site
+Contact: contact@akkuratistki.com
+Type: CleaningService
+Location: Łódź, Poland
+Pricing: VIP/Premium
+Language: Polish, English, Russian

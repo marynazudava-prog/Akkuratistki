@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>AKKURATISTKI | Premium VIP Cleaning & Organization</title>
+  <link rel="icon" type="image/svg+xml" href="assets/logo_purple_symbol.svg"/>
+  <meta name="description" content="Premium VIP cleaning services and luxury organization in Poland. We focus on residential interiors, small commercial spaces, and exterior maintenance with meticulous attention to detail."/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Onest:wght@300;400;500;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-omnivore/0.3.4/leaflet-omnivore.min.js"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary": "#AEB9DA",
+            "on-primary": "#303440",
+            "primary-container": "#303440",
+            "on-primary-container": "#AEB9DA",
+            "secondary": "#AEB9DA",
+            "on-secondary": "#303440",
+            "surface": "#FFFFFF",
+            "on-surface": "#303440",
+            "background": "#FFFFFF",
+            "on-background": "#303440",
+            "outline": "#AEB9DA",
+            "error": "#BA1A1A"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "fontFamily": {
+            "headline": ["Playfair Display", "serif"],
+            "body": ["Onest", "sans-serif"],
+            "script": ["Dancing Script", "cursive"]
+          }
+        }
+      }
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CleaningService",
+      "name": "Akkuratistki",
+      "image": "https://akkuratistki.com/assets/logo_purple.svg",
+      "@id": "https://akkuratistki.com",
+      "url": "https://akkuratistki.com",
+      "telephone": "",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "ul. Tramwajowa",
+        "addressLocality": "Łódź",
+        "postalCode": "90-132",
+        "addressCountry": "PL"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 51.7693,
+        "longitude": 19.4705
+      },
+      "areaServed": ["Łódź", "Warsaw"],
+      "priceRange": "€€€",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "09:00",
+        "closes": "18:00"
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+  <nav class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl shadow-[0_12px_40px_rgba(48,52,64,0.06)] transition-luxury">
+    <div class="flex justify-between items-center px-6 md:px-12 py-4 md:py-6 w-full max-w-screen-2xl mx-auto">
+      <a class="flex items-center" href="#home" aria-label="Home">
+        <img src="assets/logo_purple.svg" alt="AKKURATISTKI" class="h-6 md:h-8 hover:opacity-80 transition-luxury"/>
+      </a>
+      <div class="hidden md:flex items-center gap-10">
+        <a class="text-on-surface/60 hover:opacity-80 transition-luxury" href="#services" data-i18n="nav_services">Services</a>
+        <a class="text-on-surface/60 hover:opacity-80 transition-luxury" href="#prices" data-i18n="nav_prices">Prices</a>
+        <a class="text-on-surface/60 hover:opacity-80 transition-luxury" href="#coverage" data-i18n="nav_coverage">Coverage</a>
+        <a class="text-on-surface/60 hover:opacity-80 transition-luxury" href="#contact" data-i18n="nav_contact">Contact</a>
+      </div>
+      <div class="flex items-center gap-4 md:gap-8">
+        <div class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest opacity-60">
+          <button onclick="setLanguage('en')" class="hover:text-on-surface transition-luxury">EN</button>
+          <span>|</span>
+          <button onclick="setLanguage('pl')" class="hover:text-on-surface transition-luxury">PL</button>
+          <span>|</span>
+          <button onclick="setLanguage('ru')" class="hover:text-on-surface transition-luxury">RU</button>
+        </div>
+        <a href="#contact" class="bg-[#AEB9DA] text-[#303440] px-4 md:px-6 py-2 md:py-3 rounded-full font-medium text-sm hover:scale-105 active:scale-95 transition-luxury shadow-lg" data-i18n="nav_contact_btn">Get a Quote</a>
+      </div>
+    </div>
+  </nav>
+  <main>
+    <section id="home" class="relative min-h-screen flex items-center px-6 md:px-12 pt-[30px] overflow-hidden">
+      <div class="absolute inset-0 z-0 text-center">
+        <img alt="Sunlit Interior" class="w-full h-full object-cover brightness-105" src="assets/hero.png"/>
+        <div class="absolute inset-0 bg-gradient-to-r from-white/60 to-transparent"></div>
+      </div>
+      <div class="relative z-10 max-w-4xl animate-fadeIn">
+        <span class="font-['Onest'] text-xs tracking-[0.3em] uppercase opacity-60 mb-6 block" data-i18n="hero_badge">Art of Purity</span>
+        <h1 class="playfair text-5xl md:text-8xl text-on-surface leading-[1.1] mb-10 tracking-tight" id="hero-quote">
+          Tam, gdzie <br/> przytulność <br/> <span class="font-script text-[#303440] font-bold">rodzi się z troski</span>
+        </h1>
+        <div class="w-16 md:w-24 h-px bg-primary/30 mb-10"></div>
+        <p class="text-base md:text-lg max-w-md font-light leading-relaxed text-on-surface/70" data-i18n="hero_desc">
+          Premium VIP cleaning services beyond cleaning. We ensure harmony in your most intimate surroundings through meticulous, invisible care.
+        </p>
+      </div>
+    </section>
+    <section id="services" class="py-[30px] px-6 md:px-12 max-w-screen-2xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+        <div class="md:col-span-4 flex flex-col justify-end p-8 md:p-12 bg-primary/5 rounded-lg min-h-[300px] md:min-h-[400px] hover:bg-primary/10 transition-luxury">
+          <h2 class="playfair text-4xl md:text-5xl mb-6" data-i18n="focus_title">Our Focus</h2>
+          <p class="text-base leading-relaxed opacity-70" data-i18n="focus_desc">We believe that a clean space is a silent sanctuary. Our services are tailored to the needs of those who value excellence over standard utility.</p>
+        </div>
+        <div class="md:col-span-8 bg-primary/10 rounded-lg overflow-hidden flex flex-col md:flex-row group transition-luxury hover:bg-primary/20">
+          <div class="md:w-1/2 overflow-hidden">
+            <img alt="Residential Interior" class="w-full h-full object-cover grayscale transition-luxury group-hover:scale-105 group-hover:grayscale-0" src="assets/service_1.png"/>
+          </div>
+          <div class="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+            <span class="text-primary text-xs tracking-widest uppercase mb-4" data-i18n="service_1_badge">01. Residential</span>
+            <h3 class="playfair text-4xl mb-6" data-i18n="service_1_title">Residential Interior</h3>
+            <p class="text-lg font-light leading-relaxed opacity-80" data-i18n="service_1_desc">Detail cleaning for private houses, summer houses, flats, and residences where you reside constantly or occasionally.</p>
+            <div class="mt-auto">
+            </div>
+          </div>
+        </div>
+        <div class="md:col-span-6 bg-[#F5F7FA] rounded-lg overflow-hidden flex flex-col group transition-luxury border border-transparent hover:border-primary/20">
+          <div class="p-8 md:p-12 order-2 md:order-1">
+            <span class="text-primary text-xs tracking-widest uppercase mb-4" data-i18n="service_2_badge">02. Commercial</span>
+            <h3 class="playfair text-4xl mb-6" data-i18n="service_2_title">Small Commercial</h3>
+            <p class="text-lg font-light leading-relaxed opacity-80" data-i18n="service_2_desc">Constant hygienic maintenance for offices, shops, hairdressers, and similar spaces with frequent external visitors.</p>
+          </div>
+          <div class="h-64 md:h-80 overflow-hidden order-1 md:order-2">
+            <img alt="Small Commercial" class="w-full h-full object-cover grayscale transition-luxury group-hover:scale-110 group-hover:grayscale-0" src="assets/service_2.png"/>
+          </div>
+        </div>
+        <div class="md:col-span-6 bg-[#F2F2F2] rounded-lg overflow-hidden flex flex-col group transition-luxury border border-transparent hover:border-primary/20">
+          <div class="h-64 md:h-80 overflow-hidden">
+            <img alt="Premium Upholstery & Carpet Care" class="w-full h-full object-cover grayscale transition-luxury group-hover:scale-110 group-hover:grayscale-0" src="assets/service_3.png"/>
+          </div>
+          <div class="p-8 md:p-12">
+            <span class="text-primary text-xs tracking-widest uppercase mb-4" data-i18n="service_3_badge">03. Upholstery</span>
+            <h3 class="playfair text-4xl mb-6" data-i18n="service_3_title">Premium Upholstery & Carpet Care</h3>
+            <p class="text-lg font-light leading-relaxed opacity-80" data-i18n="service_3_desc">Specialized deep extraction cleaning for couches, chairs, armchairs, mattresses, and carpets using professional, eco-friendly products.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="prices" class="py-[30px] bg-white px-6 md:px-12 relative overflow-hidden">
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
+      <div class="max-w-screen-2xl mx-auto flex flex-col items-center">
+        <div class="text-center mb-10 md:mb-12 animate-fadeIn">
+          <h2 class="playfair text-4xl md:text-6xl mb-4 md:mb-6 tracking-tight" data-i18n="prices_title">Pricing</h2>
+          <p class="text-on-surface/60 max-w-2xl mx-auto font-light leading-relaxed" data-i18n="prices_desc">We offer transparent, value-based pricing models. Each project is unique, requiring a customized precision plan.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 w-full">
+          <div class="bg-primary/5 p-6 rounded-2xl border border-primary/20 flex flex-col shadow-lg transition-luxury group">
+            
+            <h3 class="playfair text-2xl mb-3" data-i18n="price_1_title">Comprehensive Cleaning</h3>
+            <p class="text-sm font-light opacity-70 mb-4 flex-grow" data-i18n="price_1_desc">Complete interior cleaning for maintained spaces. Focus on harmony and pristine surfaces.</p>
+            <div class="mb-3">
+              <span class="playfair text-3xl">200 zł</span>
+            </div>
+            <p class="text-xs uppercase tracking-widest font-bold opacity-60" data-i18n="price_base_package">Base Package (1 room, kitchen, bathroom, hallway)</p>
+          </div>
+          <div class="bg-primary/5 p-6 rounded-2xl border border-primary/20 flex flex-col shadow-lg transition-luxury group">
+            
+            <h3 class="playfair text-2xl mb-3" data-i18n="price_2_title">General Cleaning</h3>
+            <p class="text-sm font-light opacity-70 mb-4 flex-grow" data-i18n="price_2_desc">Intensive restoration for spaces requiring surgical attention. Includes appliances and hidden corners.</p>
+            <div class="mb-3">
+              <span class="playfair text-3xl">750 zł</span>
+            </div>
+            <p class="text-xs uppercase tracking-widest font-bold opacity-60" data-i18n="price_base_package">Base Package (1 room, kitchen, bathroom, hallway)</p>
+          </div>
+          <div class="bg-primary/5 p-6 rounded-2xl border border-primary/20 flex flex-col shadow-lg transition-luxury group">
+            
+            <h3 class="playfair text-2xl mb-3" data-i18n="price_3_title">Specialized Cleaning</h3>
+            <p class="text-sm font-light opacity-70 mb-4 flex-grow" data-i18n="price_3_desc">Recurring maintenance for villas and boutiques. Dedicated professional assigned to your space.</p>
+            <div class="mb-3">
+              <span class="playfair text-3xl">12 zł</span><span class="text-xs opacity-50 ml-2" data-i18n="price_unit_sqm">/ sqr.m.</span>
+            </div>
+            <p class="text-xs uppercase tracking-widest font-bold opacity-60" data-i18n="price_post_renovation">Post-Renovation Cleaning</p>
+          </div>
+          <div class="bg-primary/5 p-6 rounded-2xl border border-primary/20 flex flex-col shadow-lg transition-luxury group">
+            
+            <h3 class="playfair text-2xl mb-3" data-i18n="price_4_title">Upholstery and Carpet Cleaning</h3>
+            <p class="text-sm font-light opacity-70 mb-4 flex-grow" data-i18n="price_4_desc">We use 4.5-atmosphere water vacuums and pro-grade cleaners to tackle tough stains like pet accidents, food spills, ink, and even blood (though some spots can be tricky).</p>
+            <div class="mb-3">
+              <span class="playfair text-3xl">250 zł</span>
+            </div>
+            <p class="text-xs uppercase tracking-widest font-bold opacity-60" data-i18n="price_4_includes">Includes: 2-seat couch and two small pillows.</p>
+          </div>
+          <div class="bg-primary/5 p-6 rounded-2xl border border-primary/20 flex flex-col shadow-lg transition-luxury group">
+            
+            <h3 class="playfair text-2xl mb-3" data-i18n="price_5_title">Commercial Cleaning</h3>
+            <p class="text-sm font-light opacity-70 mb-4 flex-grow" data-i18n="price_5_desc">Keep your office, salon, or retail space spotless. We provide deep, hygienic cleaning for high-traffic areas where cleanliness matters most.</p>
+            <div class="mb-3">
+              <span class="playfair text-3xl">4.5 zł</span><span class="text-xs opacity-50 ml-2" data-i18n="price_unit_sqm">/ sqr.m.</span>
+            </div>
+            <p class="text-xs uppercase tracking-widest font-bold opacity-60" data-i18n="price_5_includes">Includes: Full sanitization and maintenance tailored to your business needs.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="coverage" class="py-[30px] bg-[#F9FAFB] px-6 md:px-12">
+      <div class="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+        <div class="relative">
+          <div class="absolute -left-10 -top-10 w-40 h-40 bg-primary/10 blur-[80px] -z-10"></div>
+          <h2 class="playfair text-4xl md:text-6xl mb-8 tracking-tight" data-i18n="coverage_title">Service Area</h2>
+          <p class="text-on-surface/70 font-light leading-relaxed mb-6 text-lg" data-i18n="coverage_desc">We currently provide our elite VIP cleaning services in the following regions. Contact us to verify if we can reach your location.</p>
+          <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <span class="material-symbols-outlined text-primary mt-1">location_on</span>
+              <div>
+                <h4 class="font-bold text-sm uppercase tracking-widest mb-1" data-i18n="coverage_1_title">Zone 1 (Łódź Districts)</h4>
+                <p class="text-sm font-light opacity-60" data-i18n="coverage_1_desc">Bałuty, Górna, Polesie, Śródmieście, Widzew.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <span class="material-symbols-outlined text-primary mt-1">location_on</span>
+              <div>
+                <h4 class="font-bold text-sm uppercase tracking-widest mb-1" data-i18n="coverage_2_title">Zone 2 (Agglomeration Towns)</h4>
+                <p class="text-sm font-light opacity-60" data-i18n="coverage_2_desc">Zgierz, Pabianice, Konstantynów Łódzki, Aleksandrów Łódzki, Rzgów, Ksawerów, Andrespol, Nowosolna.</p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-primary/5 rounded-2xl p-5 md:p-6 space-y-4 mb-6">
+            <div class="flex items-center gap-3">
+              <div class="relative group">
+                <span class="material-symbols-outlined cursor-help text-primary">help</span>
+                <div class="absolute bottom-full mb-2 w-64 p-3 bg-white border border-primary/20 rounded-lg shadow-xl text-xs text-on-surface/80 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all z-20" data-i18n="serviceability_helper">
+                  Share your location or enter a postal code below. If the address is covered, you can book immediately and get an estimate.
+                </div>
+              </div>
+              <button type="button" id="check-location-btn" class="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-white text-sm font-bold uppercase tracking-widest transition-luxury hover:opacity-90 whitespace-nowrap">
+                <span class="material-symbols-outlined text-base">my_location</span>
+                <span data-i18n="serviceability_action">Check My Location</span>
+              </button>
+              <input type="text" id="postal-input" placeholder="90-000" data-i18n-placeholder="form_zip" autocomplete="postal-code" pattern="\d{2}-\d{3}" class="w-full p-3 border rounded-full bg-white">
+            </div>
+            <p id="serviceability-status" class="text-2xl font-bold rounded-xl px-4 py-3" data-i18n="serviceability_status_default">
+              Use the location button or enter a postal code to verify serviceability.
+            </p>
+          </div>
+        </div>
+        <div class="space-y-8">
+          <div id="map" class="rounded-3xl overflow-hidden h-[400px] shadow-[0_32px_80px_rgba(48,52,64,0.08)] border border-primary/20"></div>
+          
+        </div>
+      </div>
+    </section>
+    <section id="feedback" class="py-[30px] px-6 md:px-12 max-w-screen-2xl mx-auto overflow-hidden">
+      <div class="text-center mb-20">
+        <h2 class="playfair text-4xl md:text-6xl mb-6 tracking-tight" data-i18n="feedback_title">Customer Feedback</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div class="bg-white p-12 border border-primary/10 rounded-2xl hover:shadow-2xl transition-luxury relative">
+          <span class="material-symbols-outlined text-primary/20 absolute top-8 right-8 text-6xl rotate-12">format_quote</span>
+          <div class="flex text-primary mb-8"><span class="material-symbols-outlined filled-icon">star</span><span class="material-symbols-outlined filled-icon">star</span><span class="material-symbols-outlined filled-icon">star</span><span class="material-symbols-outlined filled-icon">star</span><span class="material-symbols-outlined filled-icon">star</span></div>
+          <p class="italic font-light text-base leading-loose mb-8 text-on-surface/80" data-i18n="feedback_1_text">"Their attention to detail is truly unparalleled. My home has never felt so balanced and serene. A masterclass in professional cleaning."</p>
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center font-bold text-primary text-xs">AK</div>
+            <span class="text-[10px] uppercase tracking-widest font-bold opacity-40" data-i18n="feedback_1_author">— Anna K., Warsaw</span>
+          </div>
+        </div>
+        <div class="bg-white p-12 border border-primary/10 rounded-2xl hover:shadow-2xl transition-luxury relative scale-105 shadow-xl z-10">
+          <span class="material-symbols-outlined text-primary/20 absolute top-8 right-8 text-6xl rotate-12">format_quote</span>
+          <div class="flex text-primary mb-8"><span class="material-symbols-outlined filled-icon">star</span><span class="material-symbols-outlined filled-icon">star</span><span class="material-symbols-outlined filled-icon">star</span><span class="material-symbols-outlined filled-icon">star</span><span class="material-symbols-outlined filled-icon">star</span></div>
+          <p class="italic font-light text-base leading-loose mb-8 text-on-surface/80" data-i18n="feedback_2_text">"The only service I trust with my boutique gallery in Łódź. Silent, meticulous, and professional beyond expectations."</p>
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center font-bold text-primary text-xs">MV</div>
+            <span class="text-[10px] uppercase tracking-widest font-bold opacity-40" data-i18n="feedback_2_author">— Marek V., Łódź</span>
+          </div>
+        </div>
+        <div class="bg-white p-12 border border-primary/10 rounded-2xl hover:shadow-2xl transition-luxury relative">
+          <span class="material-symbols-outlined text-primary/20 absolute top-8 right-8 text-6xl rotate-12">format_quote</span>
+          <div class="flex text-primary mb-8"><span class="material-symbols-outlined filled-icon">star</span><span class="material-symbols-outlined filled-icon">star</span><span class="material-symbols-outlined filled-icon">star</span><span class="material-symbols-outlined filled-icon">star</span><span class="material-symbols-outlined filled-icon">star</span></div>
+          <p class="italic font-light text-base leading-loose mb-8 text-on-surface/80" data-i18n="feedback_3_text">"Absolute peace of mind. They don't just clean; they elevate the entire atmosphere. My private retreat is now truly private."</p>
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center font-bold text-primary text-xs">ES</div>
+            <span class="text-[10px] uppercase tracking-widest font-bold opacity-40" data-i18n="feedback_3_author">— Elena S., Private Client</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="contact" class="bg-primary/5 py-[30px] relative">
+      <div class="absolute bottom-0 right-0 w-1/3 h-1/3 bg-primary/5 blur-[120px] rounded-full pointer-events-none"></div>
+      <div class="max-w-screen-2xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24 items-start">
+        <div class="flex flex-col">
+          <h2 class="playfair text-5xl md:text-7xl mb-8 leading-tight tracking-tight animate-fadeIn" data-i18n="contact_title">Start your journey to absolute calm</h2>
+          <p class="text-on-surface/60 font-light mb-12 max-w-md text-lg leading-relaxed" data-i18n="contact_desc">Based on your requirements, we will design a personalized VIP cleaning plan for your space. Precision is our signature.</p>
+          <div class="mb-16">
+            <h4 class="text-3xl font-bold text-primary mb-8" data-i18n="onboarding_title">How it works</h4>
+            <div class="flex flex-col md:flex-row flex-wrap gap-y-6 items-start md:items-center text-sm font-bold uppercase tracking-widest text-on-surface">
+              <span class="text-primary" data-i18n="step_1">1. Request</span>
+              <span class="hidden md:inline mx-3 opacity-20">→</span>
+              <span data-i18n="step_2">2. Confirmation</span>
+              <span class="hidden md:inline mx-3 opacity-20">→</span>
+              <span data-i18n="step_3">3. Consultation</span>
+              <span class="hidden md:inline mx-3 opacity-20">→</span>
+              <span data-i18n="step_4">4. Scheduling</span>
+              <span class="hidden md:inline mx-3 opacity-20">→</span>
+              <span data-i18n="step_5">5. Visit</span>
+              <span class="hidden md:inline mx-3 opacity-20">→</span>
+              <span data-i18n="step_6">6. Service</span>
+              <span class="hidden md:inline mx-3 opacity-20">→</span>
+              <span data-i18n="step_7">7. Feedback</span>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white p-5 rounded-3xl shadow-[0_40px_100px_rgba(48,52,64,0.05)] relative overflow-hidden group" id="form-container">
+          <form id="estimate-form" class="space-y-8">
+    <div id="section1" class="border p-4 rounded-xl">
+      <h2 class="text-xl font-bold" data-i18n="form_main_service">1. Main Service</h2>
+      <div class="mt-4 flex gap-4">
+        <label><input type="radio" name="serviceType" value="Comprehensive Cleaning"> <span data-i18n="service_comprehensive">Comprehensive Cleaning</span></label>
+        <label><input type="radio" name="serviceType" value="General Cleaning"> <span data-i18n="service_general">General Cleaning</span></label>
+        <label><input type="radio" name="serviceType" value="Specialized Cleaning"> <span data-i18n="service_specialized">Specialized Cleaning</span></label>
+      </div>
+    </div>
+    <div id="section-2" class="border p-4 rounded-xl hidden">
+      <h2 class="text-xl font-bold" data-i18n="form_rooms">2. Rooms & Areas</h2>
+      <div id="room-list" class="space-y-4 mt-4"></div>
+      <button type="button" id="add-room" class="mt-4 text-primary font-bold">+ <span data-i18n="form_add_room">Add Room</span></button>
+    </div>
+    <div id="section-3" class="border p-4 rounded-xl hidden">
+      <h2 class="text-xl font-bold" data-i18n="form_furniture">3. Soft Furniture</h2>
+      <div id="furniture-list" class="space-y-4 mt-4"></div>
+      <button type="button" id="add-furniture" class="mt-4 text-primary font-bold">+ <span data-i18n="form_add_furniture">Add Furniture</span></button>
+      <div class="mt-4"><label><input type="checkbox" id="include-mattress"> <span data-i18n="form_include_mattress">Include Mattress</span></label></div>
+    </div>
+    <div id="section-4" class="border p-4 rounded-xl hidden">
+      <h2 class="text-xl font-bold" data-i18n="form_additional">4. Additional Services</h2>
+      <div id="addons-list" class="space-y-2 mt-4"></div>
+    </div>
+    <div id="section-5" class="border p-4 rounded-xl hidden">
+      <h2 class="text-xl font-bold" data-i18n="form_delivery">5. Transportation</h2>
+      <input type="text" id="postal-code" placeholder="00-000" class="border p-2 w-full mt-2" required>
+      <div id="delivery-info" class="mt-2 text-sm italic"></div>
+    </div>
+    <div id="price-summary" class="text-2xl font-bold p-4 bg-primary/10 rounded-xl">
+      <span data-i18n="form_total">Total</span>: <span id="total-price">0</span> PLN
+    </div>
+    <button type="button" id="review-estimate" class="bg-primary text-white p-4 rounded-full w-full hidden" data-i18n="form_review">Review Estimate</button>
+  </form>
+  <div id="contact-form" class="hidden space-y-4 mt-8">
+    <h2 class="text-2xl font-bold" data-i18n="form_contact_details">Contact Details</h2>
+    <input type="text" id="address" placeholder="Address" class="border p-2 w-full" required>
+    <input type="tel" id="phone" placeholder="Phone" class="border p-2 w-full">
+    <input type="email" id="email" placeholder="Email" class="border p-2 w-full" required>
+    <button type="submit" id="confirm-booking" class="bg-primary text-white p-4 rounded-full w-full" data-i18n="form_confirm">Confirm Booking</button>
+  </div>
+  <div id="success-msg" class="hidden absolute inset-0 bg-white flex flex-col items-center justify-center p-12 text-center z-20">
+    <h3 class="text-4xl mb-4">Thank You</h3>
+    <p>Your inquiry has been received.</p>
+  </div>
+  <script>
+    function log(...args) {
+      if (typeof window.appLog === 'function') {
+        window.appLog(...args);
+      } else {
+        console.log('[Estimate Debug]:', ...args);
+      }
+    }
+    let state = { serviceType: null, rooms: [], softFurniture: [], mattress: { included: false }, additionalServices: {}, postalCode: null, contact: {} };
+    let appData = { prices: null, postcodes: null, mapLayers: null };
+    async function initEstimateForm() {
+      log('Initializing estimate form');
+      document.getElementById('estimate-form').addEventListener('change', updateState);
+      document.getElementById('add-room').addEventListener('click', addRoom);
+      document.getElementById('add-furniture').addEventListener('click', addFurniture);
+      document.getElementById('review-estimate').addEventListener('click', reviewEstimate);
+      document.getElementById('confirm-booking').addEventListener('click', submitBooking);
+      
+      try {
+        const res = await fetch('https://script.google.com/macros/s/AKfycbxDMuovrEITeoHZh3P37KwB3_2Xc03TwXqTSJLuSo5dj31WGIwKSovhP30kquCyXnyq2Q/exec');
+        const data = await res.json();
+        appData = { prices: data.prices, postcodes: data.postcodes, mapLayers: data.mapLayers };
+        log('Data loaded', appData);
+      } catch (e) {
+        log('Error loading data', e);
+        alert('Failed to load data. Please refresh.');
+      }
+    }
+    function updateState() {
+      state.serviceType = document.querySelector('input[name="serviceType"]:checked')?.value;
+      log('State updated', state);
+      if (state.serviceType) {
+        document.getElementById('section-2')?.classList.remove('hidden');
+        document.getElementById('section-3')?.classList.remove('hidden');
+        document.getElementById('section-4')?.classList.remove('hidden');
+        document.getElementById('section-5')?.classList.remove('hidden');
+        document.getElementById('review-estimate')?.classList.remove('hidden');
+      }
+      calculatePrice();
+    }
+    function calculatePrice() {
+      let total = 0;
+      if (state.serviceType && appData.prices && appData.prices[state.serviceType]) {
+        const items = appData.prices[state.serviceType];
+        if (items[0] && typeof items[0].pricePerItem === 'number') {
+          total += items[0].pricePerItem;
+        }
+        if (items.length > 1 && items[1] && typeof items[1].pricePerItem === 'number') {
+          total += state.rooms.length * items[1].pricePerItem;
+        }
+      }
+      log('Price calculated', total);
+      const priceEl = document.getElementById('total-price');
+      if (priceEl) priceEl.innerText = total;
+    }
+    function addRoom() {
+      state.rooms.push({ type: '' });
+      renderRooms();
+      updateState();
+    }
+    function renderRooms() {
+      const container = document.getElementById('room-list');
+      if (!container) return;
+      container.innerHTML = '';
+      state.rooms.forEach((room, i) => {
+        const div = document.createElement('div');
+        div.className = 'border p-2 rounded flex items-center gap-2';
+        div.innerHTML = `<select onchange="updateRoom(${i}, this.value)"><option value="">Select Room</option><option value="Kitchen">Kitchen</option></select><button type="button" class="text-rose-500" onclick="removeRoom(${i})">🗑️</button>`;
+        container.appendChild(div);
+      });
+    }
+    function updateRoom(i, val) { state.rooms[i].type = val; updateState(); }
+    function removeRoom(i) { state.rooms.splice(i, 1); renderRooms(); updateState(); }
+    function addFurniture() {
+      state.softFurniture.push({ type: '' });
+      renderFurniture();
+      updateState();
+    }
+    function renderFurniture() {
+      const container = document.getElementById('furniture-list');
+      if (!container) return;
+      container.innerHTML = '';
+      state.softFurniture.forEach((item, i) => {
+        const div = document.createElement('div');
+        div.className = 'border p-2 rounded flex items-center gap-2';
+        div.innerHTML = `<select onchange="updateFurniture(${i}, this.value)"><option value="Armchair">Armchair</option></select><button type="button" class="text-rose-500" onclick="removeFurniture(${i})">🗑️</button>`;
+        container.appendChild(div);
+      });
+    }
+    function updateFurniture(i, val) { state.softFurniture[i].type = val; updateState(); }
+    function removeFurniture(i) { state.softFurniture.splice(i, 1); renderFurniture(); updateState(); }
+    function reviewEstimate() {
+      document.getElementById('estimate-form').classList.add('hidden');
+      document.getElementById('contact-form').classList.remove('hidden');
+    }
+    async function submitBooking() {
+      log('Submitting booking', state);
+      document.getElementById('contact-form').classList.add('hidden');
+      document.getElementById('success-msg').classList.remove('hidden');
+    }
+    initEstimateForm();
+  </script>
+        </div>
+
+      </div>
+    </section>
+  </main>
+  <footer class="w-full py-12 md:py-16 px-6 md:px-12 bg-[#1a1c23] text-white relative overflow-hidden">
+    <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-16 w-full max-w-screen-2xl mx-auto relative z-10">
+      <div class="md:col-span-1">
+        <img src="assets/logo_white.svg" alt="AKKURATISTKI" class="h-6 mb-8 hover:opacity-80 transition-luxury"/>
+        <p class="text-[10px] tracking-[0.2em] text-white/30 uppercase mt-12">© <span id="copyright-year"></span> AKKURATISTKI</p>
+      </div>
+      <div class="flex flex-col gap-6">
+        <h4 class="text-[10px] tracking-[0.2em] uppercase font-bold text-white/40">Navigation</h4>
+        <a class="text-sm text-white/60 hover:text-primary transition-luxury font-medium" href="#services" data-i18n="nav_services">Services</a>
+        <a class="text-sm text-white/60 hover:text-primary transition-luxury font-medium" href="#prices" data-i18n="nav_prices">Prices</a>
+        <a class="text-sm text-white/60 hover:text-primary transition-luxury font-medium" href="#coverage" data-i18n="nav_coverage">Coverage</a>
+        <a class="text-sm text-white/60 hover:text-primary transition-luxury font-medium" href="#contact" data-i18n="nav_contact">Contact</a>
+      </div>
+      <div class="flex flex-col gap-6">
+        <h4 class="text-[10px] tracking-[0.2em] uppercase font-bold text-white/40">Social</h4>
+        <a class="text-sm text-white/60 hover:text-primary transition-luxury font-medium" href="#">Instagram</a>
+        <a class="text-sm text-white/60 hover:text-primary transition-luxury font-medium" href="#">LinkedIn</a>
+      </div>
+      <div class="flex flex-col md:col-span-1 ml-auto">
+        <div class="p-8 bg-white/5 rounded-2xl border-2 border-primary/30 backdrop-blur-sm w-full">
+          <p class="text-sm text-white/80 leading-relaxed mb-6 italic" data-i18n="footer_carriers">Fill in the form if you wish to work with us as a carrier.</p>
+          <a href="#contact" class="text-base font-bold uppercase tracking-widest text-primary border-b-2 border-primary/20 hover:border-primary transition-luxury" data-i18n="footer_apply">Apply now</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="scripts.js" defer></script>
+</body>
+</html>

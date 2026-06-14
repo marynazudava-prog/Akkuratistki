@@ -1,0 +1,10 @@
+# Logs and temporary files
+*.log
+*.tmp
+.DS_Store
+
+# Node modules and build files
+node_modules/
+dist/
+.env
+.cache/
