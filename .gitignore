@@ -4,6 +4,9 @@
 .DS_Store
 
 # Node modules and build files
+*.gs
+*.csv
+*.pdf
 node_modules/
 dist/
 .env

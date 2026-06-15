@@ -330,38 +330,66 @@
         </div>
         <div class="bg-white p-5 rounded-3xl shadow-[0_40px_100px_rgba(48,52,64,0.05)] relative overflow-hidden group" id="form-container">
           <form id="estimate-form" class="space-y-8">
-    <div id="section1" class="border p-4 rounded-xl">
-      <h2 class="text-xl font-bold" data-i18n="form_main_service">1. Main Service</h2>
-      <div class="mt-4 flex gap-4">
-        <label><input type="radio" name="serviceType" value="Comprehensive Cleaning"> <span data-i18n="service_comprehensive">Comprehensive Cleaning</span></label>
-        <label><input type="radio" name="serviceType" value="General Cleaning"> <span data-i18n="service_general">General Cleaning</span></label>
-        <label><input type="radio" name="serviceType" value="Specialized Cleaning"> <span data-i18n="service_specialized">Specialized Cleaning</span></label>
+    <div id="section-1" class="border p-4 rounded-xl cursor-pointer hover:bg-primary/5 transition-luxury">
+      <div class="flex items-center justify-between">
+        <h2 class="text-xl font-bold" data-i18n="form_main_service">1. Main Service <span class="text-primary">*</span></h2>
+        <span class="material-symbols-outlined text-primary">expand_more</span>
+      </div>
+      <div class="content hidden mt-4">
+        <div class="flex gap-4">
+          <label><input type="radio" name="serviceType" value="Comprehensive Cleaning"> <span data-i18n="service_comprehensive">Comprehensive Cleaning</span></label>
+          <label><input type="radio" name="serviceType" value="General Cleaning"> <span data-i18n="service_general">General Cleaning</span></label>
+          <label><input type="radio" name="serviceType" value="Specialized Cleaning"> <span data-i18n="service_specialized">Specialized Cleaning</span></label>
+        </div>
       </div>
     </div>
-    <div id="section-2" class="border p-4 rounded-xl hidden">
-      <h2 class="text-xl font-bold" data-i18n="form_rooms">2. Rooms & Areas</h2>
-      <div id="room-list" class="space-y-4 mt-4"></div>
-      <button type="button" id="add-room" class="mt-4 text-primary font-bold">+ <span data-i18n="form_add_room">Add Room</span></button>
+    <div id="section-2" class="border p-4 rounded-xl cursor-pointer hover:bg-primary/5 transition-luxury">
+      <div class="flex items-center justify-between">
+        <h2 class="text-xl font-bold" data-i18n="form_rooms">2. Rooms & Areas</h2>
+        <span class="material-symbols-outlined text-primary">expand_more</span>
+      </div>
+      <div class="content hidden mt-4">
+        <div id="room-list" class="space-y-4"></div>
+        <button type="button" id="add-room" class="mt-4 text-primary font-bold">+ <span data-i18n="form_add_room">Add Room</span></button>
+      </div>
     </div>
-    <div id="section-3" class="border p-4 rounded-xl hidden">
-      <h2 class="text-xl font-bold" data-i18n="form_furniture">3. Soft Furniture</h2>
-      <div id="furniture-list" class="space-y-4 mt-4"></div>
-      <button type="button" id="add-furniture" class="mt-4 text-primary font-bold">+ <span data-i18n="form_add_furniture">Add Furniture</span></button>
-      <div class="mt-4"><label><input type="checkbox" id="include-mattress"> <span data-i18n="form_include_mattress">Include Mattress</span></label></div>
+    <div id="section-3" class="border p-4 rounded-xl cursor-pointer hover:bg-primary/5 transition-luxury">
+      <div class="flex items-center justify-between">
+        <h2 class="text-xl font-bold" data-i18n="form_furniture">3. Soft Furniture & Carpets</h2>
+        <span class="material-symbols-outlined text-primary">expand_more</span>
+      </div>
+      <div class="content hidden mt-4">
+        <div id="furniture-list" class="space-y-4"></div>
+        <button type="button" id="add-furniture" class="mt-4 text-primary font-bold">+ <span data-i18n="form_add_furniture">Add Furniture</span></button>
+        <div id="mattress-list" class="space-y-4 mt-4"></div>
+        <button type="button" id="add-mattress" class="mt-4 text-primary font-bold">+ <span data-i18n="form_add_mattress">Add Mattress</span></button>
+        <div id="carpet-list" class="space-y-4 mt-4"></div>
+        <button type="button" id="add-carpet" class="mt-4 text-primary font-bold">+ <span data-i18n="form_add_carpet">Add Carpet</span></button>
+      </div>
     </div>
-    <div id="section-4" class="border p-4 rounded-xl hidden">
-      <h2 class="text-xl font-bold" data-i18n="form_additional">4. Additional Services</h2>
-      <div id="addons-list" class="space-y-2 mt-4"></div>
+    <div id="section-4" class="border p-4 rounded-xl cursor-pointer hover:bg-primary/5 transition-luxury">
+      <div class="flex items-center justify-between">
+        <h2 class="text-xl font-bold" data-i18n="form_additional">4. Additional Services</h2>
+        <span class="material-symbols-outlined text-primary">expand_more</span>
+      </div>
+      <div class="content hidden mt-4">
+        <div id="addons-list" class="space-y-2"></div>
+      </div>
     </div>
-    <div id="section-5" class="border p-4 rounded-xl hidden">
-      <h2 class="text-xl font-bold" data-i18n="form_delivery">5. Transportation</h2>
-      <input type="text" id="postal-code" placeholder="00-000" class="border p-2 w-full mt-2" required>
-      <div id="delivery-info" class="mt-2 text-sm italic"></div>
+    <div id="section-5" class="border p-4 rounded-xl cursor-pointer hover:bg-primary/5 transition-luxury">
+      <div class="flex items-center justify-between">
+        <h2 class="text-xl font-bold" data-i18n="form_delivery">5. Transportation</h2>
+        <span class="material-symbols-outlined text-primary">expand_more</span>
+      </div>
+      <div class="content hidden mt-4">
+        <input type="text" id="postal-code" placeholder="00-000" class="border p-2 w-full" required>
+        <div id="delivery-info" class="mt-2 text-sm italic"></div>
+      </div>
     </div>
     <div id="price-summary" class="text-2xl font-bold p-4 bg-primary/10 rounded-xl">
       <span data-i18n="form_total">Total</span>: <span id="total-price">0</span> PLN
     </div>
-    <button type="button" id="review-estimate" class="bg-primary text-white p-4 rounded-full w-full hidden" data-i18n="form_review">Review Estimate</button>
+    <button type="button" id="review-estimate" class="bg-primary text-white p-4 rounded-full w-full hidden" data-i18n="form_review">Book Service</button>
   </form>
   <div id="contact-form" class="hidden space-y-4 mt-8">
     <h2 class="text-2xl font-bold" data-i18n="form_contact_details">Contact Details</h2>
@@ -374,108 +402,6 @@
     <h3 class="text-4xl mb-4">Thank You</h3>
     <p>Your inquiry has been received.</p>
   </div>
-  <script>
-    function log(...args) {
-      if (typeof window.appLog === 'function') {
-        window.appLog(...args);
-      } else {
-        console.log('[Estimate Debug]:', ...args);
-      }
-    }
-    let state = { serviceType: null, rooms: [], softFurniture: [], mattress: { included: false }, additionalServices: {}, postalCode: null, contact: {} };
-    let appData = { prices: null, postcodes: null, mapLayers: null };
-    async function initEstimateForm() {
-      log('Initializing estimate form');
-      document.getElementById('estimate-form').addEventListener('change', updateState);
-      document.getElementById('add-room').addEventListener('click', addRoom);
-      document.getElementById('add-furniture').addEventListener('click', addFurniture);
-      document.getElementById('review-estimate').addEventListener('click', reviewEstimate);
-      document.getElementById('confirm-booking').addEventListener('click', submitBooking);
-      
-      try {
-        const res = await fetch('https://script.google.com/macros/s/AKfycbxDMuovrEITeoHZh3P37KwB3_2Xc03TwXqTSJLuSo5dj31WGIwKSovhP30kquCyXnyq2Q/exec');
-        const data = await res.json();
-        appData = { prices: data.prices, postcodes: data.postcodes, mapLayers: data.mapLayers };
-        log('Data loaded', appData);
-      } catch (e) {
-        log('Error loading data', e);
-        alert('Failed to load data. Please refresh.');
-      }
-    }
-    function updateState() {
-      state.serviceType = document.querySelector('input[name="serviceType"]:checked')?.value;
-      log('State updated', state);
-      if (state.serviceType) {
-        document.getElementById('section-2')?.classList.remove('hidden');
-        document.getElementById('section-3')?.classList.remove('hidden');
-        document.getElementById('section-4')?.classList.remove('hidden');
-        document.getElementById('section-5')?.classList.remove('hidden');
-        document.getElementById('review-estimate')?.classList.remove('hidden');
-      }
-      calculatePrice();
-    }
-    function calculatePrice() {
-      let total = 0;
-      if (state.serviceType && appData.prices && appData.prices[state.serviceType]) {
-        const items = appData.prices[state.serviceType];
-        if (items[0] && typeof items[0].pricePerItem === 'number') {
-          total += items[0].pricePerItem;
-        }
-        if (items.length > 1 && items[1] && typeof items[1].pricePerItem === 'number') {
-          total += state.rooms.length * items[1].pricePerItem;
-        }
-      }
-      log('Price calculated', total);
-      const priceEl = document.getElementById('total-price');
-      if (priceEl) priceEl.innerText = total;
-    }
-    function addRoom() {
-      state.rooms.push({ type: '' });
-      renderRooms();
-      updateState();
-    }
-    function renderRooms() {
-      const container = document.getElementById('room-list');
-      if (!container) return;
-      container.innerHTML = '';
-      state.rooms.forEach((room, i) => {
-        const div = document.createElement('div');
-        div.className = 'border p-2 rounded flex items-center gap-2';
-        div.innerHTML = `<select onchange="updateRoom(${i}, this.value)"><option value="">Select Room</option><option value="Kitchen">Kitchen</option></select><button type="button" class="text-rose-500" onclick="removeRoom(${i})">🗑️</button>`;
-        container.appendChild(div);
-      });
-    }
-    function updateRoom(i, val) { state.rooms[i].type = val; updateState(); }
-    function removeRoom(i) { state.rooms.splice(i, 1); renderRooms(); updateState(); }
-    function addFurniture() {
-      state.softFurniture.push({ type: '' });
-      renderFurniture();
-      updateState();
-    }
-    function renderFurniture() {
-      const container = document.getElementById('furniture-list');
-      if (!container) return;
-      container.innerHTML = '';
-      state.softFurniture.forEach((item, i) => {
-        const div = document.createElement('div');
-        div.className = 'border p-2 rounded flex items-center gap-2';
-        div.innerHTML = `<select onchange="updateFurniture(${i}, this.value)"><option value="Armchair">Armchair</option></select><button type="button" class="text-rose-500" onclick="removeFurniture(${i})">🗑️</button>`;
-        container.appendChild(div);
-      });
-    }
-    function updateFurniture(i, val) { state.softFurniture[i].type = val; updateState(); }
-    function removeFurniture(i) { state.softFurniture.splice(i, 1); renderFurniture(); updateState(); }
-    function reviewEstimate() {
-      document.getElementById('estimate-form').classList.add('hidden');
-      document.getElementById('contact-form').classList.remove('hidden');
-    }
-    async function submitBooking() {
-      log('Submitting booking', state);
-      document.getElementById('contact-form').classList.add('hidden');
-      document.getElementById('success-msg').classList.remove('hidden');
-    }
-    initEstimateForm();
-  </script>
         </div>
 
       </div>
