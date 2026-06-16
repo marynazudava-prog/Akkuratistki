@@ -1705,7 +1705,7 @@ async function submitBooking(e) {
   
   // Show loading state
   if (confirmBtn) confirmBtn.disabled = true;
-  if (spinner) spinner.classList.remove('hidden');
+  if (spinner) spinner.style.display = 'inline-flex';
   if (buttonText) buttonText.classList.add('opacity-50');
   
   try {
@@ -1718,7 +1718,7 @@ async function submitBooking(e) {
       console.error('[DEBUG] Please fill in all required fields (Address and Email)');
       // Hide loading state on error
       if (confirmBtn) confirmBtn.disabled = false;
-      if (spinner) spinner.classList.add('hidden');
+      if (spinner) spinner.style.display = 'none';
       if (buttonText) buttonText.classList.remove('opacity-50');
       return;
     }
@@ -1809,7 +1809,7 @@ async function submitBooking(e) {
   } finally {
     // Always hide loading state
     if (confirmBtn) confirmBtn.disabled = false;
-    if (spinner) spinner.classList.add('hidden');
+    if (spinner) spinner.style.display = 'none';
     if (buttonText) buttonText.classList.remove('opacity-50');
   }
 }
