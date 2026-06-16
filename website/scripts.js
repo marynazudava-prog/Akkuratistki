@@ -1,3 +1,7 @@
+/**
+ * PROJECT REQUIREMENT: All errors and user messages MUST use console.log/console.error
+ * DO NOT use alert() or throw new Error() - use console output for debugging only
+ */
 window.APP_DEBUG_MODE = true;
 window.appLog = (...args) => {
   if (window.APP_DEBUG_MODE) {
@@ -155,7 +159,7 @@ const TRANSLATIONS = {
     "form_delivery": "Transportation",
     "form_total": "Total",
     "form_review": "Book Service",
-    "form_confirm": "Confirm Booking",
+    "form_confirm": "Book Service",
     "form_contact_details": "Contact Details"
   },
   "pl": {
@@ -293,7 +297,7 @@ const TRANSLATIONS = {
     "form_delivery": "Transport",
     "form_total": "Razem",
     "form_review": "Zamów Usługę",
-    "form_confirm": "Potwierdź Zamówienie",
+    "form_confirm": "Zamów Usługę",
     "form_contact_details": "Dane Kontaktowe"
   },
   "ru": {
@@ -431,7 +435,7 @@ const TRANSLATIONS = {
     "form_delivery": "Транспорт",
     "form_total": "Итого",
     "form_review": "Заказать услугу",
-    "form_confirm": "Подтвердить заказ",
+    "form_confirm": "Заказать услугу",
     "form_contact_details": "Контактные данные"
   }
 };
@@ -988,6 +992,10 @@ async function initEstimateForm() {
     console.log('[DEBUG] Fetch response status:', res.status);
     const data = await res.json();
     console.log('[DEBUG] Data received:', data);
+    console.log('[DEBUG] Data keys:', Object.keys(data));
+    console.log('[DEBUG] Data.metadata:', data.metadata);
+    console.log('[DEBUG] Data.metadata type:', typeof data.metadata);
+    console.log('[DEBUG] Data.metadata keys:', data.metadata ? Object.keys(data.metadata) : 'metadata is null/undefined');
     estimateAppData = { 
       prices: data.prices, 
       postcodes: data.postcodes, 
@@ -997,9 +1005,11 @@ async function initEstimateForm() {
     
     console.log('[DEBUG] estimateAppData:', estimateAppData);
     console.log('[DEBUG] Metadata:', estimateAppData.metadata);
+    console.log('[DEBUG] Metadata keys:', Object.keys(estimateAppData.metadata));
     
     if (estimateAppData.metadata) {
       console.log('[DEBUG] Loading metadata from estimateAppData.metadata');
+      console.log('[DEBUG] estimateAppData.metadata:', JSON.stringify(estimateAppData.metadata));
       ROOM_TYPES = estimateAppData.metadata.roomTypes || [];
       WINDOW_SIZES = estimateAppData.metadata.windowSizes || [];
       WINDOW_MATERIALS = estimateAppData.metadata.windowMaterials || [];
@@ -1013,8 +1023,14 @@ async function initEstimateForm() {
       CARPET_MATERIAL_MULTIPLIERS = estimateAppData.metadata.carpetMaterialMultipliers || {};
       DIRTINESS_MULTIPLIERS = estimateAppData.metadata.dirtinessMultipliers || {};
       console.log('[DEBUG] Metadata loaded: ROOM_TYPES count:', ROOM_TYPES.length, 'FURNITURE_TYPES count:', FURNITURE_TYPES.length);
+      console.log('[DEBUG] ROOM_TYPES:', ROOM_TYPES);
+      console.log('[DEBUG] FURNITURE_TYPES:', FURNITURE_TYPES);
+      console.log('[DEBUG] MATTRESS_SIZES:', MATTRESS_SIZES);
+      console.log('[DEBUG] CARPET_MATERIALS:', CARPET_MATERIALS);
+      console.log('[DEBUG] ADDITIONAL_SERVICES:', ADDITIONAL_SERVICES);
     } else {
       console.log('[DEBUG] WARNING: estimateAppData.metadata is empty or undefined');
+      console.log('[DEBUG] estimateAppData:', estimateAppData);
     }
     
     if (estimateAppData.postcodes) {
@@ -1037,7 +1053,7 @@ async function initEstimateForm() {
   } catch (e) {
     console.error('[DEBUG] Error in initEstimateForm:', e);
     console.error('[Estimate Debug]: Error loading data', e);
-    alert('Failed to load pricing data. Please refresh.');
+    console.error('[DEBUG] Failed to load pricing data. Please refresh.');
   }
 }
 
@@ -1179,6 +1195,7 @@ function calculatePrice() {
   }
   
   total = Math.round(total * 100) / 100;
+  console.log('[DEBUG] calculatePrice total:', total, 'currency:', estimateState.currency || 'PLN');
   priceEl.innerHTML = `${total.toFixed(2)}`;
 }
 
@@ -1213,14 +1230,15 @@ function updateRoom(index, field, value) {
 
 function renderRooms() {
   console.log('[DEBUG] renderRooms called, ROOM_TYPES:', ROOM_TYPES);
+  console.log('[DEBUG] ROOM_TYPES length:', ROOM_TYPES ? ROOM_TYPES.length : 'ROOM_TYPES is null/undefined');
   const container = document.getElementById('room-list');
   if (!container) {
     console.log('[DEBUG] room-list container not found');
     return;
   }
   
-  if (ROOM_TYPES.length === 0) {
-    console.log('[DEBUG] ROOM_TYPES is empty, showing loading message');
+  if (!ROOM_TYPES || ROOM_TYPES.length === 0) {
+    console.log('[DEBUG] ROOM_TYPES is empty or undefined, showing loading message');
     container.innerHTML = '<p class="text-center text-on-surface/60 text-sm py-4">Loading room types...</p>';
     return;
   }
@@ -1393,10 +1411,12 @@ function updateFurniture(index, field, value) {
 
 function renderFurniture() {
   console.log('[DEBUG] renderFurniture called, FURNITURE_TYPES:', FURNITURE_TYPES);
+  console.log('[DEBUG] FURNITURE_TYPES length:', FURNITURE_TYPES ? FURNITURE_TYPES.length : 'FURNITURE_TYPES is null/undefined');
   const container = document.getElementById('furniture-list');
   if (!container) return;
   
-  if (FURNITURE_TYPES.length === 0) {
+  if (!FURNITURE_TYPES || FURNITURE_TYPES.length === 0) {
+    console.log('[DEBUG] FURNITURE_TYPES is empty or undefined');
     container.innerHTML = '<p class="text-center text-on-surface/60 text-sm py-2">Loading furniture types...</p>';
     return;
   }
@@ -1459,10 +1479,12 @@ function updateMattress(index, size) {
 
 function renderMattresses() {
   console.log('[DEBUG] renderMattresses called, MATTRESS_SIZES:', MATTRESS_SIZES);
+  console.log('[DEBUG] MATTRESS_SIZES length:', MATTRESS_SIZES ? MATTRESS_SIZES.length : 'MATTRESS_SIZES is null/undefined');
   const container = document.getElementById('mattress-list');
   if (!container) return;
   
-  if (MATTRESS_SIZES.length === 0) {
+  if (!MATTRESS_SIZES || MATTRESS_SIZES.length === 0) {
+    console.log('[DEBUG] MATTRESS_SIZES is empty or undefined');
     container.innerHTML = '<p class="text-center text-on-surface/60 text-sm py-2">Loading mattress sizes...</p>';
     return;
   }
@@ -1512,10 +1534,12 @@ function updateCarpet(index, field, value) {
 
 function renderCarpets() {
   console.log('[DEBUG] renderCarpets called, CARPET_MATERIALS:', CARPET_MATERIALS);
+  console.log('[DEBUG] CARPET_MATERIALS length:', CARPET_MATERIALS ? CARPET_MATERIALS.length : 'CARPET_MATERIALS is null/undefined');
   const container = document.getElementById('carpet-list');
   if (!container) return;
   
-  if (CARPET_MATERIALS.length === 0) {
+  if (!CARPET_MATERIALS || CARPET_MATERIALS.length === 0) {
+    console.log('[DEBUG] CARPET_MATERIALS is empty or undefined');
     container.innerHTML = '<p class="text-center text-on-surface/60 text-sm py-2">Loading carpet options...</p>';
     return;
   }
@@ -1617,7 +1641,7 @@ async function submitBooking(e) {
   const postalCode = document.getElementById('contact-postal')?.value || estimateState.postalCode;
   
   if (!address || !email) {
-    alert('Please fill in all required fields (Address and Email)');
+    console.error('[DEBUG] Please fill in all required fields (Address and Email)');
     return;
   }
   
@@ -1660,10 +1684,10 @@ async function submitBooking(e) {
       if (contactForm) contactForm.classList.add('hidden');
       if (successMsg) successMsg.classList.remove('hidden');
     } else {
-      throw new Error('Submission failed');
+      console.error('[DEBUG] Submission failed');
     }
   } catch (e) {
     console.error('[Estimate Debug]: Submission error:', e);
-    alert('Failed to submit your request. Please try again or contact us directly.');
+    console.error('[DEBUG] Failed to submit your request. Please try again or contact us directly.');
   }
 }
