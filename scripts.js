@@ -601,6 +601,8 @@ function initFormSubmission() {
     }
     e.preventDefault();
     form.classList.add("hidden");
+    const estimateForm = document.getElementById('estimate-form');
+    if (estimateForm) estimateForm.classList.add('hidden');
     const successMsg = document.getElementById("success-msg");
     if (successMsg) {
       successMsg.classList.remove("hidden");
@@ -1757,11 +1759,13 @@ async function submitBooking(e) {
     console.log('[DEBUG] Submission response:', response);
     
     const contactForm = document.getElementById('contact-form');
+    const estimateForm = document.getElementById('estimate-form');
     const successMsg = document.getElementById('success-msg');
     
     if (response && response.ok === true) {
       console.log('[DEBUG] Submission successful');
       if (contactForm) contactForm.classList.add('hidden');
+      if (estimateForm) estimateForm.classList.add('hidden');
       if (successMsg) {
         successMsg.classList.remove('hidden');
         // Translate success message elements
@@ -1774,6 +1778,7 @@ async function submitBooking(e) {
       console.error('[DEBUG] Submission returned ok=false:', response);
       // Still show success for better UX, but could show error message instead
       if (contactForm) contactForm.classList.add('hidden');
+      if (estimateForm) estimateForm.classList.add('hidden');
       if (successMsg) {
         successMsg.classList.remove('hidden');
         // Translate success message elements
@@ -1789,8 +1794,10 @@ async function submitBooking(e) {
     console.error('[DEBUG] Failed to submit your request. Please try again or contact us directly.');
     // Show success message anyway for better UX
     const contactForm = document.getElementById('contact-form');
+    const estimateForm = document.getElementById('estimate-form');
     const successMsg = document.getElementById('success-msg');
     if (contactForm) contactForm.classList.add('hidden');
+    if (estimateForm) estimateForm.classList.add('hidden');
     if (successMsg) {
       successMsg.classList.remove('hidden');
       // Translate success message elements
