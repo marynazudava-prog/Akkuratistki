@@ -159,7 +159,7 @@ const TRANSLATIONS = {
     "form_delivery": "Transportation",
     "form_total": "Total",
     "form_review": "Book Service",
-    "form_confirm": "Book Service",
+    "form_confirm": "Confirm Booking",
     "form_contact_details": "Contact Details"
   },
   "pl": {
@@ -297,7 +297,7 @@ const TRANSLATIONS = {
     "form_delivery": "Transport",
     "form_total": "Razem",
     "form_review": "Zamów Usługę",
-    "form_confirm": "Zamów Usługę",
+    "form_confirm": "Potwierdź rezerwację",
     "form_contact_details": "Dane Kontaktowe"
   },
   "ru": {
@@ -435,7 +435,7 @@ const TRANSLATIONS = {
     "form_delivery": "Транспорт",
     "form_total": "Итого",
     "form_review": "Заказать услугу",
-    "form_confirm": "Заказать услугу",
+    "form_confirm": "Подтвердить бронирование",
     "form_contact_details": "Контактные данные"
   }
 };
