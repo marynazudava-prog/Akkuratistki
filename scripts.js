@@ -825,9 +825,9 @@ function initMap() {
   }
 
   function hydrateCoverageLayers(payload) {
-    const layers = payload?.layers || {};
-    const outlineData = layers.outline || payload.outline || null;
-    const zoneData = layers.zones || payload.zones || null;
+    const layers = payload?.mapLayers || payload?.layers || {};
+    const outlineData = layers.outline || payload.mapLayers?.outline || payload.outline || null;
+    const zoneData = layers.zones || payload.mapLayers?.zones || payload.zones || null;
     const postalCodes = Array.isArray(payload?.postalCodes) ? payload.postalCodes : [];
 
     if (outlineData) coverageLayers.outline.addData(outlineData);
