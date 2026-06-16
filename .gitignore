@@ -2,13 +2,13 @@
 *.log
 *.tmp
 .DS_Store
-
-# Node modules and build files
 *.gs
 *.md
 *.code-workspace
 *.csv
 *.pdf
+
+# Node modules and build files
 node_modules/
 dist/
 .env
