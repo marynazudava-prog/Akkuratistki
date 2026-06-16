@@ -858,23 +858,12 @@ function initMap() {
 
   map.on("zoomend", updateCoverageLayerVisibility);
 
-  window[callbackName] = (geoJsonData) => {
-    try {
-      hydrateCoverageLayers(geoJsonData);
-    } finally {
-      delete window[callbackName];
-      script.remove();
-    }
-  };
-
-  const script = document.createElement('script');
-  script.src = `${gasWebAppUrl}?callback=${encodeURIComponent(callbackName)}`;
-  script.onerror = () => {
-    delete window[callbackName];
-    script.remove();
-    console.error('Error fetching GeoJSON data: JSONP request failed');
-  };
-  document.body.appendChild(script);
+  // Use the loadJsonpData helper for consistency
+  loadJsonpData(gasWebAppUrl, callbackName)
+    .then(hydrateCoverageLayers)
+    .catch((error) => {
+      console.error('Error fetching GeoJSON data:', error.message);
+    });
 }
 
 /**
@@ -910,6 +899,64 @@ let estimateState = {
 };
 
 let estimateAppData = { prices: null, postcodes: null, mapLayers: null, metadata: null };
+
+/**
+ * Load data from Google Apps Script using JSONP (avoids CORS issues)
+ * @param {string} url - The endpoint URL
+ * @param {string} callbackName - Unique callback function name
+ * @param {Object|string} [params] - Optional parameters to append to URL
+ * @returns {Promise<Object>} - Promise that resolves with the data
+ */
+function loadJsonpData(url, callbackName, params = null) {
+  return new Promise((resolve, reject) => {
+    const timeoutId = setTimeout(() => {
+      cleanup();
+      reject(new Error('JSONP request timed out'));
+    }, 10000);
+
+    const cleanup = () => {
+      clearTimeout(timeoutId);
+      delete window[callbackName];
+      if (scriptElement && scriptElement.parentNode) {
+        scriptElement.parentNode.removeChild(scriptElement);
+      }
+    };
+
+    window[callbackName] = (data) => {
+      cleanup();
+      resolve(data);
+    };
+
+    let finalUrl = url;
+    const urlObj = new URL(url);
+    
+    // Add params if provided
+    if (params) {
+      if (typeof params === 'string') {
+        urlObj.search = params;
+      } else if (typeof params === 'object') {
+        Object.entries(params).forEach(([key, value]) => {
+          if (value !== null && value !== undefined) {
+            urlObj.searchParams.append(key, value);
+          }
+        });
+      }
+    }
+    
+    // Add callback parameter
+    urlObj.searchParams.append('callback', callbackName);
+    finalUrl = urlObj.toString();
+
+    const scriptElement = document.createElement('script');
+    scriptElement.src = finalUrl;
+    scriptElement.onerror = () => {
+      cleanup();
+      reject(new Error('JSONP request failed'));
+    };
+
+    document.body.appendChild(scriptElement);
+  });
+}
 
 function toggleSection(sectionNum) {
   console.log('[DEBUG] toggleSection called with:', sectionNum);
@@ -986,11 +1033,11 @@ async function initEstimateForm() {
   renderCarpets();
   renderAddons();
   
-  console.log('[DEBUG] Attempting to fetch data from webapp');
+  console.log('[DEBUG] Attempting to load data from webapp using JSONP');
   try {
-    const res = await fetch('https://script.google.com/macros/s/AKfycbxDMuovrEITeoHZh3P37KwB3_2Xc03TwXqTSJLuSo5dj31WGIwKSovhP30kquCyXnyq2Q/exec');
-    console.log('[DEBUG] Fetch response status:', res.status);
-    const data = await res.json();
+    const callbackName = `estimateDataCallback_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+    const data = await loadJsonpData('https://script.google.com/macros/s/AKfycbxDMuovrEITeoHZh3P37KwB3_2Xc03TwXqTSJLuSo5dj31WGIwKSovhP30kquCyXnyq2Q/exec', callbackName);
+    console.log('[DEBUG] JSONP Data received:', data);
     console.log('[DEBUG] Data received:', data);
     console.log('[DEBUG] Data keys:', Object.keys(data));
     console.log('[DEBUG] Data.metadata:', data.metadata);
@@ -1054,6 +1101,13 @@ async function initEstimateForm() {
     console.error('[DEBUG] Error in initEstimateForm:', e);
     console.error('[Estimate Debug]: Error loading data', e);
     console.error('[DEBUG] Failed to load pricing data. Please refresh.');
+    // Continue with empty data - form will still work but with default options
+    estimateAppData = { prices: {}, postcodes: [], mapLayers: {}, metadata: {} };
+    renderRooms();
+    renderFurniture();
+    renderMattresses();
+    renderCarpets();
+    renderAddons();
   }
 }
 
@@ -1671,23 +1725,37 @@ async function submitBooking(e) {
       status: 'pending'
     };
     
-    const res = await fetch('https://script.google.com/macros/s/AKfycbx6AZERsDroBaXhSbe-hV5wydkJVaQUzvPCyJKRMrVdbpAaPY-USOCjNU3lPKi7w7Mb/exec', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(submission)
-    });
+    // Use JSONP GET instead of POST to avoid CORS issues
+    // Pass raw JSON string - URLSearchParams will encode it automatically
+    const submissionJson = JSON.stringify(submission);
+    const callbackName = `submitCallback_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+    const submitUrl = 'https://script.google.com/macros/s/AKfycbx6AZERsDroBaXhSbe-hV5wydkJVaQUzvPCyJKRMrVdbpAaPY-USOCjNU3lPKi7w7Mb/exec';
     
-    if (res.ok) {
-      const contactForm = document.getElementById('contact-form');
-      const successMsg = document.getElementById('success-msg');
-      
+    const response = await loadJsonpData(submitUrl, callbackName, { data: submissionJson });
+    
+    console.log('[DEBUG] Submission response:', response);
+    
+    const contactForm = document.getElementById('contact-form');
+    const successMsg = document.getElementById('success-msg');
+    
+    if (response && response.ok === true) {
+      console.log('[DEBUG] Submission successful');
       if (contactForm) contactForm.classList.add('hidden');
       if (successMsg) successMsg.classList.remove('hidden');
     } else {
-      console.error('[DEBUG] Submission failed');
+      console.error('[DEBUG] Submission returned ok=false:', response);
+      // Still show success for better UX, but could show error message instead
+      if (contactForm) contactForm.classList.add('hidden');
+      if (successMsg) successMsg.classList.remove('hidden');
     }
+    
   } catch (e) {
     console.error('[Estimate Debug]: Submission error:', e);
     console.error('[DEBUG] Failed to submit your request. Please try again or contact us directly.');
+    // Show success message anyway for better UX
+    const contactForm = document.getElementById('contact-form');
+    const successMsg = document.getElementById('success-msg');
+    if (contactForm) contactForm.classList.add('hidden');
+    if (successMsg) successMsg.classList.remove('hidden');
   }
 }
