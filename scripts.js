@@ -601,7 +601,15 @@ function initFormSubmission() {
     }
     e.preventDefault();
     form.classList.add("hidden");
-    document.getElementById("success-msg").classList.remove("hidden");
+    const successMsg = document.getElementById("success-msg");
+    if (successMsg) {
+      successMsg.classList.remove("hidden");
+      // Translate success message elements
+      successMsg.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        el.textContent = translate(key);
+      });
+    }
   });
 }
 function initMap() {
@@ -1689,30 +1697,43 @@ function toggleMessagingPrefs() {
 async function submitBooking(e) {
   if (e) e.preventDefault();
   
-  const address = document.getElementById('address')?.value;
-  const email = document.getElementById('email')?.value;
-  const phone = document.getElementById('phone')?.value;
-  const postalCode = document.getElementById('contact-postal')?.value || estimateState.postalCode;
+  const confirmBtn = document.getElementById('confirm-booking');
+  const spinner = confirmBtn?.querySelector('.spinner');
+  const buttonText = confirmBtn?.querySelector('.button-text');
   
-  if (!address || !email) {
-    console.error('[DEBUG] Please fill in all required fields (Address and Email)');
-    return;
-  }
-  
-  const messagingPrefs = [];
-  document.querySelectorAll('input[name="messaging"]:checked').forEach(el => {
-    messagingPrefs.push(el.value);
-  });
-  
-  estimateState.contact = {
-    address,
-    email,
-    phone,
-    postalCode,
-    messagingPrefs
-  };
+  // Show loading state
+  if (confirmBtn) confirmBtn.disabled = true;
+  if (spinner) spinner.classList.remove('hidden');
+  if (buttonText) buttonText.classList.add('opacity-50');
   
   try {
+    const address = document.getElementById('address')?.value;
+    const email = document.getElementById('email')?.value;
+    const phone = document.getElementById('phone')?.value;
+    const postalCode = document.getElementById('contact-postal')?.value || estimateState.postalCode;
+    
+    if (!address || !email) {
+      console.error('[DEBUG] Please fill in all required fields (Address and Email)');
+      // Hide loading state on error
+      if (confirmBtn) confirmBtn.disabled = false;
+      if (spinner) spinner.classList.add('hidden');
+      if (buttonText) buttonText.classList.remove('opacity-50');
+      return;
+    }
+    
+    const messagingPrefs = [];
+    document.querySelectorAll('input[name="messaging"]:checked').forEach(el => {
+      messagingPrefs.push(el.value);
+    });
+    
+    estimateState.contact = {
+      address,
+      email,
+      phone,
+      postalCode,
+      messagingPrefs
+    };
+    
     const priceEl = document.getElementById('total-price');
     const totalMatch = priceEl?.textContent.match(/([\d.]+)/);
     const totalPrice = totalMatch ? parseFloat(totalMatch[0]) : 0;
@@ -1741,12 +1762,26 @@ async function submitBooking(e) {
     if (response && response.ok === true) {
       console.log('[DEBUG] Submission successful');
       if (contactForm) contactForm.classList.add('hidden');
-      if (successMsg) successMsg.classList.remove('hidden');
+      if (successMsg) {
+        successMsg.classList.remove('hidden');
+        // Translate success message elements
+        successMsg.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          el.textContent = translate(key);
+        });
+      }
     } else {
       console.error('[DEBUG] Submission returned ok=false:', response);
       // Still show success for better UX, but could show error message instead
       if (contactForm) contactForm.classList.add('hidden');
-      if (successMsg) successMsg.classList.remove('hidden');
+      if (successMsg) {
+        successMsg.classList.remove('hidden');
+        // Translate success message elements
+        successMsg.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          el.textContent = translate(key);
+        });
+      }
     }
     
   } catch (e) {
@@ -1756,6 +1791,18 @@ async function submitBooking(e) {
     const contactForm = document.getElementById('contact-form');
     const successMsg = document.getElementById('success-msg');
     if (contactForm) contactForm.classList.add('hidden');
-    if (successMsg) successMsg.classList.remove('hidden');
+    if (successMsg) {
+      successMsg.classList.remove('hidden');
+      // Translate success message elements
+      successMsg.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        el.textContent = translate(key);
+      });
+    }
+  } finally {
+    // Always hide loading state
+    if (confirmBtn) confirmBtn.disabled = false;
+    if (spinner) spinner.classList.add('hidden');
+    if (buttonText) buttonText.classList.remove('opacity-50');
   }
 }

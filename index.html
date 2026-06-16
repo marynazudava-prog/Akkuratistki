@@ -396,11 +396,14 @@
     <input type="text" id="address" placeholder="Address" class="border p-2 w-full" required>
     <input type="tel" id="phone" placeholder="Phone" class="border p-2 w-full">
     <input type="email" id="email" placeholder="Email" class="border p-2 w-full" required>
-    <button type="submit" id="confirm-booking" class="bg-primary text-white p-4 rounded-full w-full" data-i18n="form_confirm">Confirm Booking</button>
+    <button type="submit" id="confirm-booking" class="bg-primary text-white p-4 rounded-full w-full flex items-center justify-center gap-2" data-i18n="form_confirm">
+      <span class="spinner hidden"><span class="material-symbols-outlined animate-spin">progress_activity</span></span>
+      <span class="button-text">Confirm Booking</span>
+    </button>
   </div>
-  <div id="success-msg" class="hidden absolute inset-0 bg-white flex flex-col items-center justify-center p-12 text-center z-20">
-    <h3 class="text-4xl mb-4">Thank You</h3>
-    <p>Your inquiry has been received.</p>
+  <div id="success-msg" class="hidden absolute inset-0 bg-white flex flex-col items-center justify-center p-12 text-center z-20 min-h-[400px]">
+    <h3 class="text-4xl mb-4" data-i18n="success_title">Thank You</h3>
+    <p data-i18n="success_desc">Your inquiry has been received. We will reach out to you shortly to provide VIP standards for your space.</p>
   </div>
         </div>
 
