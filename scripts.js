@@ -109,7 +109,7 @@ const TRANSLATIONS = {
     "serviceability_status_location_match": "Your location is inside our service area.",
     "serviceability_status_location_miss": "Your location is outside our current service area.",
     "serviceability_status_postal_format": "Enter a postal code in the format 90-123.",
-    "serviceability_status_postal_match": "Postal code is inside our service area. You can book the service and get an estimate.",
+    "serviceability_status_postal_match": "You are inside our service area.",
     "serviceability_status_postal_miss": "This postal code is outside our current service area.",
     "form_zip": "Postal Code",
     "form_area": "Area Name",
@@ -247,7 +247,7 @@ const TRANSLATIONS = {
     "serviceability_status_location_match": "Twoja lokalizacja mieści się w naszym obszarze.",
     "serviceability_status_location_miss": "Twoja lokalizacja jest poza naszym aktualnym obszarem usług.",
     "serviceability_status_postal_format": "Wpisz kod pocztowy w formacie 90-123.",
-    "serviceability_status_postal_match": "Kod pocztowy mieści się w naszym obszarze. Możesz zamówić usługę i dostać wycenę.",
+    "serviceability_status_postal_match": "Kod pocztowy mieści się w naszym obszarze.",
     "serviceability_status_postal_miss": "Ten kod pocztowy jest poza naszym aktualnym obszarem usług.",
     "form_zip": "Kod Pocztowy",
     "form_area": "Nazwa obszaru",
@@ -385,7 +385,7 @@ const TRANSLATIONS = {
     "serviceability_status_location_match": "Вы в зоне обслуживания.",
     "serviceability_status_location_miss": "Ваша локация находится вне нашей текущей зоны обслуживания.",
     "serviceability_status_postal_format": "Введите почтовый индекс в формате 90-123.",
-    "serviceability_status_postal_match": "Почтовый индекс находится в нашей зоне обслуживания. Вы можете забронировать услугу и получить оценку.",
+    "serviceability_status_postal_match": "Вы в зоне обслуживания.",
     "serviceability_status_postal_miss": "Этот почтовый индекс находится вне нашей текущей зоны обслуживания.",
     "form_zip": "Индекс",
     "form_area": "Название района",
@@ -509,7 +509,7 @@ function renderServiceabilityStatus() {
   if (!statusEl) return;
   statusEl.textContent = translate(serviceabilityState.statusKey);
   if (serviceabilityState.statusVariant === "success") {
-    statusEl.className = "text-4xl font-bold text-emerald-600 rounded-xl px-4 py-3 animate-pulse";
+    statusEl.className = "text-2xl font-bold text-emerald-600 rounded-xl px-4 py-3 animate-pulse";
   } else if (serviceabilityState.statusVariant === "error") {
     statusEl.className = "text-2xl font-bold text-rose-600 rounded-xl px-4 py-3";
   } else {
