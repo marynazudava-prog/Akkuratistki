@@ -5,6 +5,8 @@
 
 # Node modules and build files
 *.gs
+*.md
+*.code-workspace
 *.csv
 *.pdf
 node_modules/
