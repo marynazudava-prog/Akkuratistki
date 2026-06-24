@@ -1475,6 +1475,20 @@ function initNewFormWithData(comprehensiveData) {
   if (comprehensiveData.additionalServices) {
     window.ADDITIONAL_SERVICES = comprehensiveData.additionalServices;
   }
+  if (comprehensiveData.carpetItems) {
+    window.CARPET_ITEMS = comprehensiveData.carpetItems;
+    appLog('CARPET_ITEMS loaded from comprehensiveData.carpetItems:', window.CARPET_ITEMS.length, 'items');
+  }
+  // Also check if carpet data is in metadata
+  if (comprehensiveData.metadata && comprehensiveData.metadata.carpetItems) {
+    window.CARPET_ITEMS = comprehensiveData.metadata.carpetItems;
+    appLog('CARPET_ITEMS loaded from metadata.carpetItems:', window.CARPET_ITEMS.length, 'items');
+  }
+  // Also check if carpet data is in Carpets array
+  if (comprehensiveData.Carpets) {
+    window.CARPET_ITEMS = comprehensiveData.Carpets;
+    appLog('CARPET_ITEMS loaded from comprehensiveData.Carpets:', window.CARPET_ITEMS.length, 'items');
+  }
   if (comprehensiveData.dirtinessLevels) {
     if (!window.DIRTINESS_LEVELS || window.DIRTINESS_LEVELS.length === 0) {
       window.DIRTINESS_LEVELS = comprehensiveData.dirtinessLevels;
@@ -1733,6 +1747,15 @@ async function loadNewFormData() {
       if (data.additionalServices) {
         window.ADDITIONAL_SERVICES = data.additionalServices;
       }
+      if (data.carpetItems) {
+        window.CARPET_ITEMS = data.carpetItems;
+        appLog('CARPET_ITEMS loaded from data.carpetItems:', window.CARPET_ITEMS.length, 'items');
+      }
+      // Also check for Carpets array (capital C)
+      if (data.Carpets) {
+        window.CARPET_ITEMS = data.Carpets;
+        appLog('CARPET_ITEMS loaded from data.Carpets:', window.CARPET_ITEMS.length, 'items');
+      }
       if (data.dirtinessLevels) {
         // Preserve existing DIRTINESS_LEVELS if they have translations
         if (!window.DIRTINESS_LEVELS || window.DIRTINESS_LEVELS.length === 0) {
@@ -1760,6 +1783,14 @@ async function loadNewFormData() {
       }
       if (data.metadata && data.metadata.additionalServices) {
         window.ADDITIONAL_SERVICES = data.metadata.additionalServices;
+      }
+      if (data.metadata && data.metadata.carpetItems) {
+        window.CARPET_ITEMS = data.metadata.carpetItems;
+        appLog('CARPET_ITEMS loaded from metadata.carpetItems:', window.CARPET_ITEMS.length, 'items');
+      }
+      if (data.metadata && data.metadata.Carpets) {
+        window.CARPET_ITEMS = data.metadata.Carpets;
+        appLog('CARPET_ITEMS loaded from metadata.Carpets:', window.CARPET_ITEMS.length, 'items');
       }
       if (data.metadata && data.metadata.dirtinessLevels) {
         // Merge metadata dirtiness levels with existing
