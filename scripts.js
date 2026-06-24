@@ -160,10 +160,14 @@ const TRANSLATIONS = {
     "carpet_width": "Width (m)",
     "carpet_length": "Length (m)",
     "carpet_dirtiness": "Dirtiness",
+    "dirtiness_level_light": "Light",
+    "dirtiness_level_medium": "Medium",
+    "dirtiness_level_heavy": "Heavy",
+    "dirtiness_level_very_heavy": "Very Heavy",
     "form_no_carpets": "No carpets added yet",
     "form_mattress_type": "Mattress Type",
-    "form_no_mattresses": "No mattresses added yet",
     "form_select_room_type": "Select Room Type",
+
     "form_add_room": "Add Room",
     "form_room_equipment": "Room Equipment",
     "form_service_type": "Service Type",
@@ -334,9 +338,17 @@ const TRANSLATIONS = {
     "carpet_width": "Szerokość (m)",
     "carpet_length": "Długość (m)",
     "carpet_dirtiness": "Zabrudzenie",
+    "dirtiness_level_light": "Lekkie",
+    "dirtiness_level_medium": "Średnie",
+    "dirtiness_level_heavy": "Silne",
+    "dirtiness_level_very_heavy": "Bardzo silne",
     "form_no_carpets": "Nie dodano jeszcze żadnych dywanów",
     "form_mattress_type": "Rodzaj materaca",
     "form_no_mattresses": "Nie dodano jeszcze żadnych materacy",
+    "mattress_type_single_both_sides": "Pojedynczy - Obie strony",
+    "mattress_type_single_one_side": "Pojedynczy - Jedna strona",
+    "mattress_type_twin_both_sides": "Podwójny - Obie strony",
+    "mattress_type_twin_one_side": "Podwójny - Jedna strona",
     "form_add_room": "Dodaj pomieszczenie",
     "form_room_equipment": "Wyposażenie pomieszczenia",
     "form_service_type": "Typ usługi",
@@ -507,9 +519,17 @@ const TRANSLATIONS = {
     "carpet_width": "Ширина (м)",
     "carpet_length": "Длина (м)",
     "carpet_dirtiness": "Загрязненность",
+    "dirtiness_level_light": "Легкое",
+    "dirtiness_level_medium": "Среднее",
+    "dirtiness_level_heavy": "Сильное",
+    "dirtiness_level_very_heavy": "Очень сильное",
     "form_no_carpets": "Еще не добавлено ни одного ковра",
     "form_mattress_type": "Тип матраса",
     "form_no_mattresses": "Еще не добавлено ни одного матраса",
+    "mattress_type_single_both_sides": "Одиночный - Две стороны",
+    "mattress_type_single_one_side": "Одиночный - Одна сторона",
+    "mattress_type_twin_both_sides": "Двойной - Две стороны",
+    "mattress_type_twin_one_side": "Двойной - Одна сторона",
     "form_add_room": "Добавить помещение",
     "form_room_equipment": "Оборудование помещения",
     "form_service_type": "Тип услуги",
@@ -568,8 +588,12 @@ function updateTranslationsForElements(lang) {
 }
 
 window.setLanguage = setLanguage = function(lang) {
+  appLog("========================================");
+  appLog("=== NOTE: LANGUAGE CHANGED TO:", lang, "===");
+  appLog("========================================");
   appLog("setLanguage called with:", lang);
   if (!TRANSLATIONS[lang]) {
+    appLog("Language not found in TRANSLATIONS, aborting");
     return;
   }
   currentLang = lang;
@@ -582,7 +606,11 @@ window.setLanguage = setLanguage = function(lang) {
   }
   
   // Update new form elements
+  appLog('Calling updateNewFormTranslations for language:', lang);
   updateNewFormTranslations();
+  appLog("========================================");
+  appLog("=== NOTE: LANGUAGE CHANGE COMPLETE ===");
+  appLog("========================================");
   
   localStorage.setItem("preferred_lang", lang);
 }
@@ -647,6 +675,33 @@ function updateNewFormTranslations() {
   const roomsSummary = document.getElementById('rooms-summary');
   if (roomsSummary) {
     renderRoomsSummary();
+  }
+  
+  // Update carpets with translated dirtiness options
+  // Re-render even if empty to update placeholder messages
+  try {
+    if (window.newFormState && window.newFormState.carpets !== undefined) {
+      renderCarpetsNew();
+    }
+  } catch (e) {
+    appLog('Error updating carpet translations:', e.message);
+  }
+
+  // Update mattresses with translated type options
+  // Re-render even if empty to update placeholder messages
+  try {
+    if (window.newFormState && window.newFormState.mattresses !== undefined) {
+      appLog('Re-rendering mattresses for language change, mattresses count:', window.newFormState.mattresses.length);
+      appLog('MATTRESS_ITEMS available:', window.MATTRESS_ITEMS ? window.MATTRESS_ITEMS.length : 0);
+      if (window.MATTRESS_ITEMS) {
+        window.MATTRESS_ITEMS.forEach(item => {
+          appLog('  Mattress item value:', item.description || item.value || item);
+        });
+      }
+      renderMattressesNew();
+    }
+  } catch (e) {
+    appLog('Error updating mattress translations:', e.message);
   }
   
   // Update all translations for dynamically added elements
@@ -2980,7 +3035,10 @@ function renderCarpetsNew() {
   const container = document.getElementById('carpet-items');
   if (!container) return;
   
-  appLog('renderCarpetsNew - currentLang:', currentLang, 'DIRTINESS_LEVELS:', window.DIRTINESS_LEVELS.length);
+  appLog('========================================');
+  appLog('=== NOTE: RENDERING CARPETS ===');
+  appLog('currentLang:', currentLang, 'DIRTINESS_LEVELS count:', window.DIRTINESS_LEVELS ? window.DIRTINESS_LEVELS.length : 0);
+  appLog('========================================');
   
   container.innerHTML = window.newFormState.carpets.map((carpet, index) => `
     <div class="border border-primary/20 rounded-lg p-3">
@@ -2998,9 +3056,14 @@ function renderCarpetsNew() {
           <select onchange="updateCarpetNew(${index}, 'dirtiness', this.value); window.calculateNewFormPrice(); window.checkBookServiceButton();" class="w-full p-2 border rounded text-sm">
             ${window.DIRTINESS_LEVELS.map(level => {
               const levelObj = typeof level === 'string' ? {description: level, translations: {}} : level;
+              const value = levelObj.description || levelObj.value || level;
               const displayText = getTranslatedText(levelObj.translations, levelObj.description || levelObj.label || levelObj.value || level);
-              appLog('Dirtiness option:', levelObj.description || level, 'translations:', levelObj.translations, 'displayText:', displayText, 'currentLang:', currentLang);
-              return `<option value="${levelObj.description || levelObj.value || level}" ${carpet.dirtiness === (levelObj.description || levelObj.value || level) ? 'selected' : ''}>${displayText}</option>`;
+              // Create translation key from description for fallback
+              // Fix: replace all non-alphanumeric with underscores, then collapse multiple underscores
+              const translationKey = `dirtiness_level_${value.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '')}`;
+              const translated = TRANSLATIONS[currentLang]?.[translationKey] || displayText;
+              appLog('NOTE: CARPET DIRTINESS OPTION - value:', value, '-> translationKey:', translationKey, '-> hasTranslation:', !!TRANSLATIONS[currentLang]?.[translationKey], '-> translated:', translated, '-> currentLang:', currentLang);
+              return `<option value="${value}" ${carpet.dirtiness === value ? 'selected' : ''}>${translated}</option>`;
             }).join('')}
           </select>
         </div>
@@ -3012,7 +3075,7 @@ function renderCarpetsNew() {
   `).join('');
   
   if (window.newFormState.carpets.length === 0) {
-    container.innerHTML = '<p class="text-center text-on-surface/60 text-sm py-4" data-i18n="form_no_carpets"></p>';
+    container.innerHTML = '';
   }
   
   // Update translations for dynamically added elements
@@ -3023,6 +3086,11 @@ function renderMattressesNew() {
   const container = document.getElementById('mattress-items');
   if (!container) return;
   
+  appLog('========================================');
+  appLog('=== NOTE: RENDERING MATTRESSES ===');
+  appLog('currentLang:', currentLang, 'MATTRESS_ITEMS count:', window.MATTRESS_ITEMS ? window.MATTRESS_ITEMS.length : 0);
+  appLog('========================================');
+  
   container.innerHTML = window.newFormState.mattresses.map((mattress, index) => `
     <div class="border border-primary/20 rounded-lg p-3">
       <div class="flex flex-wrap gap-3 items-end">
@@ -3031,8 +3099,14 @@ function renderMattressesNew() {
           <select onchange="updateMattressNew(${index}, 'type', this.value); window.calculateNewFormPrice(); window.checkBookServiceButton();" class="w-full p-2 border rounded text-sm">
             ${window.MATTRESS_ITEMS ? window.MATTRESS_ITEMS.map(mattressItem => {
               const itemObj = typeof mattressItem === 'string' ? {description: mattressItem, translations: {}} : mattressItem;
+              const value = itemObj.description || itemObj.value || mattressItem;
               const displayText = getTranslatedText(itemObj.translations, itemObj.description || itemObj.label || itemObj.value || mattressItem);
-              return `<option value="${itemObj.description || itemObj.value || mattressItem}" ${mattress.type === (itemObj.description || itemObj.value || mattressItem) ? 'selected' : ''}>${displayText}</option>`;
+              // Create translation key from description for fallback
+              // Fix: replace all non-alphanumeric with underscores, then collapse multiple underscores
+              const translationKey = `mattress_type_${value.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '')}`;
+              const translated = TRANSLATIONS[currentLang]?.[translationKey] || displayText;
+              appLog('NOTE: MATTRESS OPTION - value:', value, '-> translationKey:', translationKey, '-> hasTranslation:', !!TRANSLATIONS[currentLang]?.[translationKey], '-> translated:', translated, '-> currentLang:', currentLang);
+              return `<option value="${value}" ${mattress.type === value ? 'selected' : ''}>${translated}</option>`;
             }).join('') : ''}
           </select>
         </div>
@@ -3044,7 +3118,7 @@ function renderMattressesNew() {
   `).join('');
   
   if (window.newFormState.mattresses.length === 0) {
-    container.innerHTML = '<p class="text-center text-on-surface/60 text-sm py-4" data-i18n="form_no_mattresses"></p>';
+    container.innerHTML = '';
   }
   
   // Update translations for dynamically added elements

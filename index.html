@@ -305,7 +305,7 @@
     </section>
     <section id="contact" class="bg-primary/5 py-[30px] relative">
       <div class="absolute bottom-0 right-0 w-1/3 h-1/3 bg-primary/5 blur-[120px] rounded-full pointer-events-none"></div>
-      <div class="max-w-screen-2xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24 items-start">
+      <div class="max-w-screen-2xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-[30%_65%] gap-16 md:gap-24 items-start">
         <div class="flex flex-col">
           <h2 class="playfair text-5xl md:text-7xl mb-8 leading-tight tracking-tight animate-fadeIn" data-i18n="contact_title">Start your journey to absolute calm</h2>
           <p class="text-on-surface/60 font-light mb-12 max-w-md text-lg leading-relaxed" data-i18n="contact_desc">Based on your requirements, we will design a personalized VIP cleaning plan for your space. Precision is our signature.</p>
@@ -328,83 +328,137 @@
             </div>
           </div>
         </div>
-        <div class="bg-white p-5 rounded-3xl shadow-[0_40px_100px_rgba(48,52,64,0.05)] relative group min-h-[500px]" id="form-container">
-          <form id="estimate-form" class="space-y-8">
-    <div id="section-1" class="border p-4 rounded-xl cursor-pointer hover:bg-primary/5 transition-luxury">
-      <div class="flex items-center justify-between">
-        <h2 class="text-xl font-bold" data-i18n="form_main_service">1. Main Service <span class="text-primary">*</span></h2>
-        <span class="material-symbols-outlined text-primary">expand_more</span>
-      </div>
-      <div class="content hidden mt-4">
-        <div class="flex gap-4">
-          <label><input type="radio" name="serviceType" value="Comprehensive Cleaning"> <span data-i18n="service_comprehensive">Comprehensive Cleaning</span></label>
-          <label><input type="radio" name="serviceType" value="General Cleaning"> <span data-i18n="service_general">General Cleaning</span></label>
-          <label><input type="radio" name="serviceType" value="Specialized Cleaning"> <span data-i18n="service_specialized">Specialized Cleaning</span></label>
-        </div>
-      </div>
-    </div>
-    <div id="section-2" class="border p-4 rounded-xl cursor-pointer hover:bg-primary/5 transition-luxury">
-      <div class="flex items-center justify-between">
-        <h2 class="text-xl font-bold" data-i18n="form_rooms">2. Rooms & Areas</h2>
-        <span class="material-symbols-outlined text-primary">expand_more</span>
-      </div>
-      <div class="content hidden mt-4">
-        <div id="room-list" class="space-y-4"></div>
-        <button type="button" id="add-room" class="mt-4 text-primary font-bold">+ <span data-i18n="form_add_room">Add Room</span></button>
-      </div>
-    </div>
-    <div id="section-3" class="border p-4 rounded-xl cursor-pointer hover:bg-primary/5 transition-luxury">
-      <div class="flex items-center justify-between">
-        <h2 class="text-xl font-bold" data-i18n="form_furniture">3. Soft Furniture & Carpets</h2>
-        <span class="material-symbols-outlined text-primary">expand_more</span>
-      </div>
-      <div class="content hidden mt-4">
-        <div id="furniture-list" class="space-y-4"></div>
-        <button type="button" id="add-furniture" class="mt-4 text-primary font-bold">+ <span data-i18n="form_add_furniture">Add Furniture</span></button>
-        <div id="mattress-list" class="space-y-4 mt-4"></div>
-        <button type="button" id="add-mattress" class="mt-4 text-primary font-bold">+ <span data-i18n="form_add_mattress">Add Mattress</span></button>
-        <div id="carpet-list" class="space-y-4 mt-4"></div>
-        <button type="button" id="add-carpet" class="mt-4 text-primary font-bold">+ <span data-i18n="form_add_carpet">Add Carpet</span></button>
-      </div>
-    </div>
-    <div id="section-4" class="border p-4 rounded-xl cursor-pointer hover:bg-primary/5 transition-luxury">
-      <div class="flex items-center justify-between">
-        <h2 class="text-xl font-bold" data-i18n="form_additional">4. Additional Services</h2>
-        <span class="material-symbols-outlined text-primary">expand_more</span>
-      </div>
-      <div class="content hidden mt-4">
-        <div id="addons-list" class="space-y-2"></div>
-      </div>
-    </div>
-    <div id="section-5" class="border p-4 rounded-xl cursor-pointer hover:bg-primary/5 transition-luxury">
-      <div class="flex items-center justify-between">
-        <h2 class="text-xl font-bold" data-i18n="form_delivery">5. Transportation</h2>
-        <span class="material-symbols-outlined text-primary">expand_more</span>
-      </div>
-      <div class="content hidden mt-4">
-        <input type="text" id="postal-code" placeholder="00-000" class="border p-2 w-full" required>
-        <div id="delivery-info" class="mt-2 text-sm italic"></div>
-      </div>
-    </div>
-    <div id="price-summary" class="text-2xl font-bold p-4 bg-primary/10 rounded-xl">
-      <span data-i18n="form_total">Total</span>: <span id="total-price">0</span> PLN
-    </div>
-    <button type="button" id="review-estimate" class="bg-primary text-white p-4 rounded-full w-full hidden" data-i18n="form_review">Book Service</button>
-  </form>
-  <div id="contact-form" class="hidden space-y-4 mt-8">
-    <h2 class="text-2xl font-bold" data-i18n="form_contact_details">Contact Details</h2>
-    <input type="text" id="address" placeholder="Address" class="border p-2 w-full" required>
-    <input type="tel" id="phone" placeholder="Phone" class="border p-2 w-full">
-    <input type="email" id="email" placeholder="Email" class="border p-2 w-full" required>
-    <button type="submit" id="confirm-booking" class="bg-primary text-white p-4 rounded-full w-full flex items-center justify-center gap-2">
-      <span class="spinner" style="display: none;"><span class="material-symbols-outlined animate-spin text-white">progress_activity</span></span>
-      <span class="button-text" data-i18n="form_confirm">Confirm Booking</span>
-    </button>
-  </div>
-  <div id="success-msg" class="hidden bg-white flex flex-col items-center justify-center p-12 text-center rounded-3xl shadow-[0_40px_100px_rgba(48,52,64,0.05)] min-h-[400px]">
-    <h3 class="text-4xl mb-4" data-i18n="success_title">Thank You</h3>
-    <p data-i18n="success_desc">Your inquiry has been received. We will reach out to you shortly to provide VIP standards for your space.</p>
-  </div>
+        <div class="bg-white p-5 rounded-3xl shadow-[0_40px_100px_rgba(48,52,64,0.05)] relative group w-full max-w-[98%]" id="form-container">
+          <!-- Form Header Menu -->
+          <div class="flex flex-wrap gap-2 mb-6 border-b border-primary/20 pb-4">
+            <button type="button" class="px-4 py-2 text-sm font-medium rounded-lg transition-luxury border border-primary/20 form-section-btn active" data-section="rooms" data-i18n="form_rooms">Rooms</button>
+            <button type="button" class="px-4 py-2 text-sm font-medium rounded-lg transition-luxury border border-transparent hover:border-primary/20 form-section-btn" data-section="furniture" data-i18n="form_furniture">Furniture</button>
+            <button type="button" class="px-4 py-2 text-sm font-medium rounded-lg transition-luxury border border-transparent hover:border-primary/20 form-section-btn" data-section="carpets-mattresses" data-i18n="form_carpets_mattresses">Carpets & Mattresses</button>
+            <button type="button" class="px-4 py-2 text-sm font-medium rounded-lg transition-luxury border border-transparent hover:border-primary/20 form-section-btn" data-section="windows" data-i18n="form_windows">Windows</button>
+            <button type="button" class="px-4 py-2 text-sm font-medium rounded-lg transition-luxury border border-transparent hover:border-primary/20 form-section-btn" data-section="services" data-i18n="form_additional">Services</button>
+          </div>
+          
+          <!-- Middle Section - Dynamic Content -->
+          <div class="form-middle-section min-h-[300px]" id="form-middle-section">
+            <!-- Rooms Section -->
+            <div class="form-section-content" id="rooms-section">
+              <div class="space-y-4">
+                <div class="flex items-center gap-4">
+                  <select id="room-type-select" class="flex-1 p-3 border border-primary/30 rounded-lg bg-white">
+                    <option value="" data-i18n="form_select_room_type"></option>
+                  </select>
+                </div>
+                <div id="room-service-container" class="hidden">
+                  <h4 class="text-sm font-medium text-on-surface/70 mb-3" data-i18n="form_service_type">Service Type</h4>
+                  <div id="room-service-list" class="flex flex-wrap gap-2"></div>
+                </div>
+                <div id="room-equipment-container" class="hidden">
+                  <h4 class="text-sm font-medium text-on-surface/70 mb-3" data-i18n="form_room_equipment">Room Equipment</h4>
+                  <div id="room-equipment-list" class="flex flex-wrap gap-2"></div>
+                  
+                </div>
+                <button type="button" id="add-room-btn" disabled class="bg-primary text-white px-4 py-2 rounded-lg font-medium hover:opacity-90 transition-luxury whitespace-nowrap mt-4 ml-auto opacity-50 cursor-not-allowed">
+                    <span data-i18n="form_add_room">Add Room</span>
+                  </button>
+                <div id="rooms-summary" class="space-y-3"></div>
+              </div>
+            </div>
+            
+            <!-- Furniture Section -->
+            <div class="form-section-content hidden" id="furniture-section">
+              <div class="space-y-4">
+                <h4 class="text-sm font-medium text-on-surface/70 mb-3" data-i18n="form_soft_furniture">Soft Furniture</h4>
+                <div id="furniture-list" class="space-y-3"></div>
+              </div>
+            </div>
+            
+            <!-- Carpets & Mattresses Section -->
+            <div class="form-section-content hidden" id="carpets-mattresses-section">
+              <div class="space-y-6">
+                <!-- Carpets Subsection -->
+                <div class="border-b border-primary/10 pb-4">
+                  <div class="flex items-center justify-between mb-4">
+                    <h4 class="text-lg font-medium" data-i18n="form_carpets">Carpets</h4>
+                    <button type="button" id="add-carpet-btn" class="text-primary font-medium text-sm hover:opacity-70 transition-luxury">
+                      + <span data-i18n="form_add_carpet">Add Carpet</span>
+                    </button>
+                  </div>
+                  <div id="carpet-items" class="space-y-4"></div>
+                </div>
+                
+                <!-- Mattresses Subsection -->
+                <div>
+                  <div class="flex items-center justify-between mb-4">
+                    <h4 class="text-lg font-medium" data-i18n="form_mattresses">Mattresses</h4>
+                    <button type="button" id="add-mattress-btn" class="text-primary font-medium text-sm hover:opacity-70 transition-luxury">
+                      + <span data-i18n="form_add_mattress">Add Mattress</span>
+                    </button>
+                  </div>
+                  <div id="mattress-items" class="space-y-4"></div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Windows Section -->
+            <div class="form-section-content hidden" id="windows-section">
+              <div class="space-y-4">
+                <div class="flex items-center gap-4">
+                  <label for="windows-count" class="font-medium" data-i18n="form_windows_count">Number of Windows</label>
+                  <input type="number" id="windows-count" min="0" value="0" class="w-20 p-3 border border-primary/30 rounded-lg">
+                </div>
+              </div>
+            </div>
+            
+            <!-- Additional Services Section -->
+            <div class="form-section-content hidden" id="services-section">
+              <div class="space-y-4">
+                <h4 class="text-sm font-medium text-on-surface/70 mb-3" data-i18n="form_additional_services">Additional Services</h4>
+                <div id="additional-services-list" class="space-y-3"></div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Form Footer (part of the form) -->
+          <div class="border-t border-primary/20 p-4 form-footer" id="form-footer">
+            <div class="flex items-center justify-between">
+              <div class="flex flex-col gap-1">
+                <div class="text-lg font-bold" id="form-total-display">
+                  <span data-i18n="form_total">Total</span>: <span id="total-price">0</span> PLN
+                </div>
+                <p class="text-xs text-on-surface/50" data-i18n="form_approximate_cost_note">* The displayed cost is approximate</p>
+              </div>
+              
+              <div class="flex items-center gap-4">
+                <input type="text" id="postal-code" placeholder="90-000" data-i18n-placeholder="form_zip" 
+                       pattern="\d{2}-\d{3}" 
+                       class="w-32 p-3 border border-primary/30 rounded-lg text-center">
+                <button type="button" id="book-service-btn" 
+                        class="bg-primary/50 text-white/70 px-6 py-3 rounded-lg font-medium cursor-not-allowed opacity-70 transition-luxury disabled" >
+                  <span class="spinner" style="display: none;"><span class="material-symbols-outlined animate-spin text-white">progress_activity</span></span>
+                  <span data-i18n="form_review">Book Service</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Contact Form (expands below when Book Service clicked) -->
+          <div id="contact-form" class="hidden space-y-4 mt-4 transition-all duration-300">
+            <h2 class="text-2xl font-bold" data-i18n="form_contact_details">Contact Details</h2>
+            <input type="text" id="address" placeholder="Address" data-i18n-placeholder="form_address_placeholder" class="border p-3 rounded-lg w-full">
+            <input type="text" id="fullname" placeholder="Full Name" data-i18n-placeholder="form_name_placeholder" class="border p-3 rounded-lg w-full" required>
+            <input type="tel" id="phone" placeholder="Phone" data-i18n-placeholder="form_phone_placeholder" class="border p-3 rounded-lg w-full" required>
+            <input type="email" id="email" placeholder="Email" data-i18n-placeholder="form_email_placeholder" class="border p-3 rounded-lg w-full" required>
+            <button type="submit" id="confirm-booking" class="bg-primary text-white p-4 rounded-full w-full flex items-center justify-center gap-2 mt-4 disabled opacity-70">
+              <span class="spinner" style="display: none;"><span class="material-symbols-outlined animate-spin text-white">progress_activity</span></span>
+              <span class="button-text" data-i18n="form_confirm">Confirm Booking</span>
+            </button>
+          </div>
+          
+          <form id="estimate-form" class="hidden"></form>
+          <div id="success-msg" class="hidden bg-white flex flex-col items-center justify-center p-12 text-center rounded-3xl shadow-[0_40px_100px_rgba(48,52,64,0.05)] min-h-[400px]">
+            <h3 class="text-4xl mb-4 playfair" data-i18n="success_title">Thank You</h3>
+            <p class="text-on-surface/70 max-w-md mx-auto" data-i18n="success_desc">Your inquiry has been received. We will reach out to you shortly to provide VIP standards for your space.</p>
+          </div>
         </div>
 
       </div>
