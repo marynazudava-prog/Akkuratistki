@@ -2716,8 +2716,14 @@ function removeRoomNew(index) {
 }
 
 function addCarpetNew() {
-  const defaultDirtiness = DIRTINESS_LEVELS[0];
-  const dirtinessValue = typeof defaultDirtiness === 'string' ? defaultDirtiness : (defaultDirtiness.description || defaultDirtiness.value || '');
+  // Get default dirtiness - use first available or empty string
+  let dirtinessValue = '';
+  if (window.DIRTINESS_LEVELS && window.DIRTINESS_LEVELS.length > 0) {
+    const defaultDirtiness = window.DIRTINESS_LEVELS[0];
+    dirtinessValue = typeof defaultDirtiness === 'string' ? defaultDirtiness : (defaultDirtiness.description || defaultDirtiness.value || '');
+  }
+  appLog('Adding carpet with default dirtiness:', dirtinessValue, 'DIRTINESS_LEVELS count:', window.DIRTINESS_LEVELS ? window.DIRTINESS_LEVELS.length : 0);
+  
   window.newFormState.carpets.push({
     width: 0,
     length: 0,
@@ -2800,7 +2806,7 @@ function renderMattressesNew() {
 
 function checkCarpetDimensions(index) {
   const carpet = window.newFormState.carpets[index];
-  if (carpet && carpet.width > 0 && carpet.length > 0) {
+  if (carpet && carpet.width > 0 && carpet.length > 0 && carpet.dirtiness && carpet.dirtiness !== '') {
     window.calculateNewFormPrice();
     window.checkBookServiceButton();
   }
@@ -2870,7 +2876,10 @@ function calculateNewFormPrice() {
   // Carpets pricing (based on area and dirtiness level)
   if (window.CARPET_ITEMS && window.CARPET_ITEMS.length > 0) {
     window.newFormState.carpets.forEach(carpet => {
-      if (carpet.width !== undefined && carpet.length !== undefined && carpet.width !== null && carpet.length !== null && carpet.dirtiness) {
+      // Check that all required fields are set (width, length, dirtiness)
+      if (carpet.width !== undefined && carpet.width !== null && 
+          carpet.length !== undefined && carpet.length !== null &&
+          carpet.dirtiness !== undefined && carpet.dirtiness !== null && carpet.dirtiness !== '') {
         // Find the carpet item that matches the dirtiness level
         const carpetItem = window.CARPET_ITEMS.find(item => 
           item.description === carpet.dirtiness || 
@@ -2883,10 +2892,12 @@ function calculateNewFormPrice() {
           appLog('Carpet price:', carpetPrice, 'area:', area, 'rate:', carpetItem.pricePerSqm, 'dirtiness:', carpet.dirtiness);
           total += carpetPrice;
         } else {
-          appLog('WARNING: No carpet item found for dirtiness:', carpet.dirtiness, 'Available:', window.CARPET_ITEMS.map(i => i.description));
+          appLog('WARNING: No carpet item found for dirtiness:', carpet.dirtiness, 'Available:', window.CARPET_ITEMS ? window.CARPET_ITEMS.map(i => i.description) : 'CARPET_ITEMS not set');
         }
       }
     });
+  } else {
+    appLog('WARNING: CARPET_ITEMS is empty or not set');
   }
   
   // Mattresses pricing
