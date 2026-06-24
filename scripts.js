@@ -161,6 +161,8 @@ const TRANSLATIONS = {
     "carpet_length": "Length (m)",
     "carpet_dirtiness": "Dirtiness",
     "form_no_carpets": "No carpets added yet",
+    "form_mattress_type": "Mattress Type",
+    "form_no_mattresses": "No mattresses added yet",
     "form_select_room_type": "Select Room Type",
     "form_add_room": "Add Room",
     "form_room_equipment": "Room Equipment",
@@ -333,6 +335,8 @@ const TRANSLATIONS = {
     "carpet_length": "Długość (m)",
     "carpet_dirtiness": "Zabrudzenie",
     "form_no_carpets": "Nie dodano jeszcze żadnych dywanów",
+    "form_mattress_type": "Rodzaj materaca",
+    "form_no_mattresses": "Nie dodano jeszcze żadnych materacy",
     "form_add_room": "Dodaj pomieszczenie",
     "form_room_equipment": "Wyposażenie pomieszczenia",
     "form_service_type": "Typ usługi",
@@ -504,6 +508,8 @@ const TRANSLATIONS = {
     "carpet_length": "Длина (м)",
     "carpet_dirtiness": "Загрязненность",
     "form_no_carpets": "Еще не добавлено ни одного ковра",
+    "form_mattress_type": "Тип матраса",
+    "form_no_mattresses": "Еще не добавлено ни одного матраса",
     "form_add_room": "Добавить помещение",
     "form_room_equipment": "Оборудование помещения",
     "form_service_type": "Тип услуги",
@@ -1478,6 +1484,34 @@ function initNewFormWithData(comprehensiveData) {
   if (comprehensiveData.additionalServices) {
     window.ADDITIONAL_SERVICES = comprehensiveData.additionalServices;
   }
+  if (comprehensiveData.mattressItems) {
+    window.MATTRESS_ITEMS = comprehensiveData.mattressItems;
+    appLog('MATTRESS_ITEMS loaded from comprehensiveData.mattressItems:', window.MATTRESS_ITEMS.length, 'items');
+  }
+  // Also check if mattress data is in Mattresses array
+  if (comprehensiveData.Mattresses) {
+    window.MATTRESS_ITEMS = comprehensiveData.Mattresses;
+    appLog('MATTRESS_ITEMS loaded from comprehensiveData.Mattresses:', window.MATTRESS_ITEMS.length, 'items');
+  }
+  // Check if mattress data is in prices.Mattresses
+  if (comprehensiveData.prices && comprehensiveData.prices.Mattresses) {
+    window.MATTRESS_ITEMS = comprehensiveData.prices.Mattresses;
+    appLog('MATTRESS_ITEMS loaded from comprehensiveData.prices.Mattresses:', window.MATTRESS_ITEMS.length, 'items');
+  }
+  // Check if mattress data is in prices.mattressItems
+  if (comprehensiveData.prices && comprehensiveData.prices.mattressItems) {
+    window.MATTRESS_ITEMS = comprehensiveData.prices.mattressItems;
+    appLog('MATTRESS_ITEMS loaded from comprehensiveData.prices.mattressItems:', window.MATTRESS_ITEMS.length, 'items');
+  }
+  // Also check metadata for mattress data
+  if (comprehensiveData.metadata && comprehensiveData.metadata.mattressItems) {
+    window.MATTRESS_ITEMS = comprehensiveData.metadata.mattressItems;
+    appLog('MATTRESS_ITEMS loaded from metadata.mattressItems:', window.MATTRESS_ITEMS.length, 'items');
+  }
+  if (comprehensiveData.metadata && comprehensiveData.metadata.Mattresses) {
+    window.MATTRESS_ITEMS = comprehensiveData.metadata.Mattresses;
+    appLog('MATTRESS_ITEMS loaded from metadata.Mattresses:', window.MATTRESS_ITEMS.length, 'items');
+  }
   if (comprehensiveData.carpetItems) {
     window.CARPET_ITEMS = comprehensiveData.carpetItems;
     // Also populate DIRTINESS_LEVELS
@@ -1813,6 +1847,25 @@ async function loadNewFormData() {
       if (data.additionalServices) {
         window.ADDITIONAL_SERVICES = data.additionalServices;
       }
+      if (data.mattressItems) {
+        window.MATTRESS_ITEMS = data.mattressItems;
+        appLog('MATTRESS_ITEMS loaded from data.mattressItems:', window.MATTRESS_ITEMS.length, 'items');
+      }
+      // Also check for Mattresses array (capital M)
+      if (data.Mattresses) {
+        window.MATTRESS_ITEMS = data.Mattresses;
+        appLog('MATTRESS_ITEMS loaded from data.Mattresses:', window.MATTRESS_ITEMS.length, 'items');
+      }
+      // Check if mattress data is in prices.Mattresses
+      if (data.prices && data.prices.Mattresses) {
+        window.MATTRESS_ITEMS = data.prices.Mattresses;
+        appLog('MATTRESS_ITEMS loaded from data.prices.Mattresses:', window.MATTRESS_ITEMS.length, 'items');
+      }
+      // Check if mattress data is in prices.mattressItems
+      if (data.prices && data.prices.mattressItems) {
+        window.MATTRESS_ITEMS = data.prices.mattressItems;
+        appLog('MATTRESS_ITEMS loaded from data.prices.mattressItems:', window.MATTRESS_ITEMS.length, 'items');
+      }
       if (data.carpetItems) {
         window.CARPET_ITEMS = data.carpetItems;
         // Also populate DIRTINESS_LEVELS
@@ -1895,6 +1948,14 @@ async function loadNewFormData() {
       }
       if (data.metadata && data.metadata.additionalServices) {
         window.ADDITIONAL_SERVICES = data.metadata.additionalServices;
+      }
+      if (data.metadata && data.metadata.mattressItems) {
+        window.MATTRESS_ITEMS = data.metadata.mattressItems;
+        appLog('MATTRESS_ITEMS loaded from metadata.mattressItems:', window.MATTRESS_ITEMS.length, 'items');
+      }
+      if (data.metadata && data.metadata.Mattresses) {
+        window.MATTRESS_ITEMS = data.metadata.Mattresses;
+        appLog('MATTRESS_ITEMS loaded from metadata.Mattresses:', window.MATTRESS_ITEMS.length, 'items');
       }
       if (data.metadata && data.metadata.carpetItems) {
         window.CARPET_ITEMS = data.metadata.carpetItems;
@@ -2900,7 +2961,16 @@ function addCarpetNew() {
 }
 
 function addMattressNew() {
-  window.newFormState.mattresses.push({});
+  // Get default mattress type
+  let mattressType = '';
+  if (window.MATTRESS_ITEMS && window.MATTRESS_ITEMS.length > 0) {
+    const defaultMattress = window.MATTRESS_ITEMS[0];
+    mattressType = typeof defaultMattress === 'string' ? defaultMattress : (defaultMattress.description || defaultMattress.value || '');
+  }
+  
+  window.newFormState.mattresses.push({
+    type: mattressType
+  });
   renderMattressesNew();
   window.calculateNewFormPrice();
   window.checkBookServiceButton();
@@ -2954,13 +3024,19 @@ function renderMattressesNew() {
   if (!container) return;
   
   container.innerHTML = window.newFormState.mattresses.map((mattress, index) => `
-    <div class="border border-primary/20 rounded-lg p-3 space-y-2">
-      <div>
-        <label class="block text-xs font-medium mb-1">Mattress ${index + 1}</label>
-        <p class="text-sm text-on-surface/60">Standard cleaning</p>
-      </div>
-      <div class="flex justify-end pt-2">
-        <button type="button" onclick="removeMattressNew(${index})" class="text-rose-400 hover:text-rose-600 transition-colors">
+    <div class="border border-primary/20 rounded-lg p-3">
+      <div class="flex flex-wrap gap-3 items-end">
+        <div class="flex-1 min-w-[200px]">
+          <label class="block text-xs font-medium mb-1" data-i18n="form_mattress_type"></label>
+          <select onchange="updateMattressNew(${index}, 'type', this.value); window.calculateNewFormPrice(); window.checkBookServiceButton();" class="w-full p-2 border rounded text-sm">
+            ${window.MATTRESS_ITEMS ? window.MATTRESS_ITEMS.map(mattressItem => {
+              const itemObj = typeof mattressItem === 'string' ? {description: mattressItem, translations: {}} : mattressItem;
+              const displayText = getTranslatedText(itemObj.translations, itemObj.description || itemObj.label || itemObj.value || mattressItem);
+              return `<option value="${itemObj.description || itemObj.value || mattressItem}" ${mattress.type === (itemObj.description || itemObj.value || mattressItem) ? 'selected' : ''}>${displayText}</option>`;
+            }).join('') : ''}
+          </select>
+        </div>
+        <button type="button" onclick="removeMattressNew(${index})" class="text-rose-400 hover:text-rose-600 transition-colors pb-2 flex-shrink-0">
           <span class="material-symbols-outlined">delete</span>
         </button>
       </div>
@@ -2968,8 +3044,11 @@ function renderMattressesNew() {
   `).join('');
   
   if (window.newFormState.mattresses.length === 0) {
-    container.innerHTML = '<p class="text-center text-on-surface/60 text-sm py-4">No mattresses added yet</p>';
+    container.innerHTML = '<p class="text-center text-on-surface/60 text-sm py-4" data-i18n="form_no_mattresses"></p>';
   }
+  
+  // Update translations for dynamically added elements
+  setTimeout(() => updateTranslationsForElements(currentLang), 0);
 }
 
 function checkCarpetDimensions(index) {
@@ -2995,6 +3074,12 @@ function removeCarpetNew(index) {
   renderCarpetsNew();
   window.calculateNewFormPrice();
   window.checkBookServiceButton();
+}
+
+function updateMattressNew(index, field, value) {
+  if (window.newFormState.mattresses[index]) {
+    window.newFormState.mattresses[index][field] = value;
+  }
 }
 
 function removeMattressNew(index) {
@@ -3069,13 +3154,25 @@ function calculateNewFormPrice() {
   }
   
   // Mattresses pricing
-  if (window.MATTRESS_ITEMS) {
+  if (window.MATTRESS_ITEMS && window.MATTRESS_ITEMS.length > 0) {
     window.newFormState.mattresses.forEach(mattress => {
-      const mattressItem = window.MATTRESS_ITEMS[0];
-      if (mattressItem) {
-        total += mattressItem.pricePerItem;
+      if (mattress.type) {
+        const mattressItem = window.MATTRESS_ITEMS.find(item => 
+          item.description === mattress.type || 
+          item.value === mattress.type ||
+          item.label === mattress.type
+        );
+        if (mattressItem && mattressItem.pricePerItem !== undefined && mattressItem.pricePerItem !== null) {
+          const mattressPrice = mattressItem.pricePerItem;
+          appLog('Mattress price:', mattressPrice, 'type:', mattress.type);
+          total += mattressPrice;
+        } else {
+          appLog('WARNING: No mattress item found for type:', mattress.type, 'Available:', window.MATTRESS_ITEMS.map(i => i.description));
+        }
       }
     });
+  } else {
+    appLog('WARNING: MATTRESS_ITEMS is empty or not set');
   }
   
   // Additional services
