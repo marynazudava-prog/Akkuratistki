@@ -2551,6 +2551,10 @@ function populateCarpetOptions() {
   // This will be used for dirtiness dropdown in carpet section
   // DIRTINESS_LEVELS is already populated
   appLog('Carpet options ready:', window.DIRTINESS_LEVELS.length);
+  // Debug: show structure of DIRTINESS_LEVELS
+  window.DIRTINESS_LEVELS.forEach((level, i) => {
+    appLog(`  DIRTINESS_LEVELS[${i}]:`, typeof level === 'string' ? `string: "${level}"` : JSON.stringify(level));
+  });
 }
 
 function showRoomEquipment(roomTypeValue) {
@@ -2807,6 +2811,8 @@ function renderCarpetsNew() {
   const container = document.getElementById('carpet-items');
   if (!container) return;
   
+  appLog('renderCarpetsNew - currentLang:', currentLang, 'DIRTINESS_LEVELS:', window.DIRTINESS_LEVELS.length);
+  
   container.innerHTML = window.newFormState.carpets.map((carpet, index) => `
     <div class="border border-primary/20 rounded-lg p-3">
       <div class="flex flex-wrap gap-3 items-end">
@@ -2824,6 +2830,7 @@ function renderCarpetsNew() {
             ${window.DIRTINESS_LEVELS.map(level => {
               const levelObj = typeof level === 'string' ? {description: level, translations: {}} : level;
               const displayText = getTranslatedText(levelObj.translations, levelObj.description || levelObj.label || levelObj.value || level);
+              appLog('Dirtiness option:', levelObj.description || level, 'translations:', levelObj.translations, 'displayText:', displayText, 'currentLang:', currentLang);
               return `<option value="${levelObj.description || levelObj.value || level}" ${carpet.dirtiness === (levelObj.description || levelObj.value || level) ? 'selected' : ''}>${displayText}</option>`;
             }).join('')}
           </select>
