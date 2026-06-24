@@ -1444,6 +1444,9 @@ function populateTranslationsFromRoomTypes() {
 
 // Initialize new form
 function initNewFormWithData(comprehensiveData) {
+  appLog('Initializing form with pre-loaded data, comprehensiveData keys:', Object.keys(comprehensiveData));
+  appLog('Checking for Carpet data - comprehensiveData.Carpets:', comprehensiveData.Carpets ? comprehensiveData.Carpets.length : 'not found');
+  appLog('Checking for Carpet data - comprehensiveData.prices:', comprehensiveData.prices ? Object.keys(comprehensiveData.prices) : 'not found');
   appLog('Initializing form with pre-loaded data, roomTypes:', comprehensiveData.roomTypes ? comprehensiveData.roomTypes.length : 0);
   
   // Store data globally for form functions
@@ -1488,6 +1491,16 @@ function initNewFormWithData(comprehensiveData) {
   if (comprehensiveData.Carpets) {
     window.CARPET_ITEMS = comprehensiveData.Carpets;
     appLog('CARPET_ITEMS loaded from comprehensiveData.Carpets:', window.CARPET_ITEMS.length, 'items');
+  }
+  // Check if carpet data is in prices.Carpets
+  if (comprehensiveData.prices && comprehensiveData.prices.Carpets) {
+    window.CARPET_ITEMS = comprehensiveData.prices.Carpets;
+    appLog('CARPET_ITEMS loaded from comprehensiveData.prices.Carpets:', window.CARPET_ITEMS.length, 'items');
+  }
+  // Check if carpet data is in prices.carpetItems
+  if (comprehensiveData.prices && comprehensiveData.prices.carpetItems) {
+    window.CARPET_ITEMS = comprehensiveData.prices.carpetItems;
+    appLog('CARPET_ITEMS loaded from comprehensiveData.prices.carpetItems:', window.CARPET_ITEMS.length, 'items');
   }
   if (comprehensiveData.dirtinessLevels) {
     if (!window.DIRTINESS_LEVELS || window.DIRTINESS_LEVELS.length === 0) {
@@ -1539,6 +1552,14 @@ function initNewFormWithData(comprehensiveData) {
   
   // Populate form with the pre-loaded data
   populateNewFormWithData(comprehensiveData);
+  
+  // Final check: log CARPET_ITEMS state
+  appLog('FINAL CHECK - CARPET_ITEMS:', window.CARPET_ITEMS ? window.CARPET_ITEMS.length + ' items' : 'NOT SET');
+  if (window.CARPET_ITEMS) {
+    window.CARPET_ITEMS.forEach(item => {
+      appLog('  Carpet item:', item.description || item.value, 'pricePerSqm:', item.pricePerSqm);
+    });
+  }
   
   return true;
 }
@@ -1755,6 +1776,16 @@ async function loadNewFormData() {
       if (data.Carpets) {
         window.CARPET_ITEMS = data.Carpets;
         appLog('CARPET_ITEMS loaded from data.Carpets:', window.CARPET_ITEMS.length, 'items');
+      }
+      // Check if carpet data is in prices.Carpets
+      if (data.prices && data.prices.Carpets) {
+        window.CARPET_ITEMS = data.prices.Carpets;
+        appLog('CARPET_ITEMS loaded from data.prices.Carpets:', window.CARPET_ITEMS.length, 'items');
+      }
+      // Check if carpet data is in prices.carpetItems
+      if (data.prices && data.prices.carpetItems) {
+        window.CARPET_ITEMS = data.prices.carpetItems;
+        appLog('CARPET_ITEMS loaded from data.prices.carpetItems:', window.CARPET_ITEMS.length, 'items');
       }
       if (data.dirtinessLevels) {
         // Preserve existing DIRTINESS_LEVELS if they have translations
