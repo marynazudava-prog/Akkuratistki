@@ -1480,26 +1480,71 @@ function initNewFormWithData(comprehensiveData) {
   }
   if (comprehensiveData.carpetItems) {
     window.CARPET_ITEMS = comprehensiveData.carpetItems;
+    // Also populate DIRTINESS_LEVELS
+    if (!window.DIRTINESS_LEVELS || window.DIRTINESS_LEVELS.length === 0) {
+      window.DIRTINESS_LEVELS = comprehensiveData.carpetItems.map(item => ({
+        value: item.description,
+        description: item.description,
+        translations: item.translation
+      }));
+      appLog('DIRTINESS_LEVELS populated from comprehensiveData.carpetItems:', window.DIRTINESS_LEVELS.length, 'items');
+    }
     appLog('CARPET_ITEMS loaded from comprehensiveData.carpetItems:', window.CARPET_ITEMS.length, 'items');
   }
   // Also check if carpet data is in metadata
   if (comprehensiveData.metadata && comprehensiveData.metadata.carpetItems) {
     window.CARPET_ITEMS = comprehensiveData.metadata.carpetItems;
+    // Also populate DIRTINESS_LEVELS
+    if (!window.DIRTINESS_LEVELS || window.DIRTINESS_LEVELS.length === 0) {
+      window.DIRTINESS_LEVELS = comprehensiveData.metadata.carpetItems.map(item => ({
+        value: item.description,
+        description: item.description,
+        translations: item.translation
+      }));
+      appLog('DIRTINESS_LEVELS populated from metadata.carpetItems:', window.DIRTINESS_LEVELS.length, 'items');
+    }
     appLog('CARPET_ITEMS loaded from metadata.carpetItems:', window.CARPET_ITEMS.length, 'items');
   }
   // Also check if carpet data is in Carpets array
   if (comprehensiveData.Carpets) {
     window.CARPET_ITEMS = comprehensiveData.Carpets;
+    // Also populate DIRTINESS_LEVELS from the same data
+    if (!window.DIRTINESS_LEVELS || window.DIRTINESS_LEVELS.length === 0) {
+      window.DIRTINESS_LEVELS = comprehensiveData.Carpets.map(item => ({
+        value: item.description,
+        description: item.description,
+        translations: item.translation
+      }));
+      appLog('DIRTINESS_LEVELS populated from comprehensiveData.Carpets:', window.DIRTINESS_LEVELS.length, 'items');
+    }
     appLog('CARPET_ITEMS loaded from comprehensiveData.Carpets:', window.CARPET_ITEMS.length, 'items');
   }
   // Check if carpet data is in prices.Carpets
   if (comprehensiveData.prices && comprehensiveData.prices.Carpets) {
     window.CARPET_ITEMS = comprehensiveData.prices.Carpets;
+    // Also populate DIRTINESS_LEVELS from the same data
+    if (!window.DIRTINESS_LEVELS || window.DIRTINESS_LEVELS.length === 0) {
+      window.DIRTINESS_LEVELS = comprehensiveData.prices.Carpets.map(item => ({
+        value: item.description,
+        description: item.description,
+        translations: item.translation
+      }));
+      appLog('DIRTINESS_LEVELS populated from comprehensiveData.prices.Carpets:', window.DIRTINESS_LEVELS.length, 'items');
+    }
     appLog('CARPET_ITEMS loaded from comprehensiveData.prices.Carpets:', window.CARPET_ITEMS.length, 'items');
   }
   // Check if carpet data is in prices.carpetItems
   if (comprehensiveData.prices && comprehensiveData.prices.carpetItems) {
     window.CARPET_ITEMS = comprehensiveData.prices.carpetItems;
+    // Also populate DIRTINESS_LEVELS
+    if (!window.DIRTINESS_LEVELS || window.DIRTINESS_LEVELS.length === 0) {
+      window.DIRTINESS_LEVELS = comprehensiveData.prices.carpetItems.map(item => ({
+        value: item.description,
+        description: item.description,
+        translations: item.translation
+      }));
+      appLog('DIRTINESS_LEVELS populated from comprehensiveData.prices.carpetItems:', window.DIRTINESS_LEVELS.length, 'items');
+    }
     appLog('CARPET_ITEMS loaded from comprehensiveData.prices.carpetItems:', window.CARPET_ITEMS.length, 'items');
   }
   if (comprehensiveData.dirtinessLevels) {
@@ -1770,21 +1815,57 @@ async function loadNewFormData() {
       }
       if (data.carpetItems) {
         window.CARPET_ITEMS = data.carpetItems;
+        // Also populate DIRTINESS_LEVELS
+        if (!window.DIRTINESS_LEVELS || window.DIRTINESS_LEVELS.length === 0) {
+          window.DIRTINESS_LEVELS = data.carpetItems.map(item => ({
+            value: item.description,
+            description: item.description,
+            translations: item.translation
+          }));
+          appLog('DIRTINESS_LEVELS populated from data.carpetItems:', window.DIRTINESS_LEVELS.length, 'items');
+        }
         appLog('CARPET_ITEMS loaded from data.carpetItems:', window.CARPET_ITEMS.length, 'items');
       }
       // Also check for Carpets array (capital C)
       if (data.Carpets) {
         window.CARPET_ITEMS = data.Carpets;
+        // Also populate DIRTINESS_LEVELS
+        if (!window.DIRTINESS_LEVELS || window.DIRTINESS_LEVELS.length === 0) {
+          window.DIRTINESS_LEVELS = data.Carpets.map(item => ({
+            value: item.description,
+            description: item.description,
+            translations: item.translation
+          }));
+          appLog('DIRTINESS_LEVELS populated from data.Carpets:', window.DIRTINESS_LEVELS.length, 'items');
+        }
         appLog('CARPET_ITEMS loaded from data.Carpets:', window.CARPET_ITEMS.length, 'items');
       }
       // Check if carpet data is in prices.Carpets
       if (data.prices && data.prices.Carpets) {
         window.CARPET_ITEMS = data.prices.Carpets;
+        // Also populate DIRTINESS_LEVELS
+        if (!window.DIRTINESS_LEVELS || window.DIRTINESS_LEVELS.length === 0) {
+          window.DIRTINESS_LEVELS = data.prices.Carpets.map(item => ({
+            value: item.description,
+            description: item.description,
+            translations: item.translation
+          }));
+          appLog('DIRTINESS_LEVELS populated from data.prices.Carpets:', window.DIRTINESS_LEVELS.length, 'items');
+        }
         appLog('CARPET_ITEMS loaded from data.prices.Carpets:', window.CARPET_ITEMS.length, 'items');
       }
       // Check if carpet data is in prices.carpetItems
       if (data.prices && data.prices.carpetItems) {
         window.CARPET_ITEMS = data.prices.carpetItems;
+        // Also populate DIRTINESS_LEVELS
+        if (!window.DIRTINESS_LEVELS || window.DIRTINESS_LEVELS.length === 0) {
+          window.DIRTINESS_LEVELS = data.prices.carpetItems.map(item => ({
+            value: item.description,
+            description: item.description,
+            translations: item.translation
+          }));
+          appLog('DIRTINESS_LEVELS populated from data.prices.carpetItems:', window.DIRTINESS_LEVELS.length, 'items');
+        }
         appLog('CARPET_ITEMS loaded from data.prices.carpetItems:', window.CARPET_ITEMS.length, 'items');
       }
       if (data.dirtinessLevels) {
@@ -1817,10 +1898,28 @@ async function loadNewFormData() {
       }
       if (data.metadata && data.metadata.carpetItems) {
         window.CARPET_ITEMS = data.metadata.carpetItems;
+        // Also populate DIRTINESS_LEVELS
+        if (!window.DIRTINESS_LEVELS || window.DIRTINESS_LEVELS.length === 0) {
+          window.DIRTINESS_LEVELS = data.metadata.carpetItems.map(item => ({
+            value: item.description,
+            description: item.description,
+            translations: item.translation
+          }));
+          appLog('DIRTINESS_LEVELS populated from metadata.carpetItems:', window.DIRTINESS_LEVELS.length, 'items');
+        }
         appLog('CARPET_ITEMS loaded from metadata.carpetItems:', window.CARPET_ITEMS.length, 'items');
       }
       if (data.metadata && data.metadata.Carpets) {
         window.CARPET_ITEMS = data.metadata.Carpets;
+        // Also populate DIRTINESS_LEVELS
+        if (!window.DIRTINESS_LEVELS || window.DIRTINESS_LEVELS.length === 0) {
+          window.DIRTINESS_LEVELS = data.metadata.Carpets.map(item => ({
+            value: item.description,
+            description: item.description,
+            translations: item.translation
+          }));
+          appLog('DIRTINESS_LEVELS populated from metadata.Carpets:', window.DIRTINESS_LEVELS.length, 'items');
+        }
         appLog('CARPET_ITEMS loaded from metadata.Carpets:', window.CARPET_ITEMS.length, 'items');
       }
       if (data.metadata && data.metadata.dirtinessLevels) {
