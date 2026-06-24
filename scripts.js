@@ -1476,7 +1476,21 @@ function initNewFormWithData(comprehensiveData) {
     window.ADDITIONAL_SERVICES = comprehensiveData.additionalServices;
   }
   if (comprehensiveData.dirtinessLevels) {
-    window.DIRTINESS_LEVELS = comprehensiveData.dirtinessLevels;
+    if (!window.DIRTINESS_LEVELS || window.DIRTINESS_LEVELS.length === 0) {
+      window.DIRTINESS_LEVELS = comprehensiveData.dirtinessLevels;
+    } else {
+      // Merge if already populated
+      comprehensiveData.dirtinessLevels.forEach(level => {
+        const exists = window.DIRTINESS_LEVELS.some(existing => 
+          (typeof existing === 'string' && existing === level) ||
+          (typeof existing === 'object' && (existing.value === level || existing.description === level)) ||
+          (typeof level === 'object' && existing && (existing.value === level.value || existing.description === level.description))
+        );
+        if (!exists) {
+          window.DIRTINESS_LEVELS.push(level);
+        }
+      });
+    }
   }
   if (comprehensiveData.postcodes) {
     estimateAppData.postcodes = comprehensiveData.postcodes;
@@ -1720,7 +1734,22 @@ async function loadNewFormData() {
         window.ADDITIONAL_SERVICES = data.additionalServices;
       }
       if (data.dirtinessLevels) {
-        window.DIRTINESS_LEVELS = data.dirtinessLevels;
+        // Preserve existing DIRTINESS_LEVELS if they have translations
+        if (!window.DIRTINESS_LEVELS || window.DIRTINESS_LEVELS.length === 0) {
+          window.DIRTINESS_LEVELS = data.dirtinessLevels;
+        } else {
+          // Merge, keeping existing items with translations
+          data.dirtinessLevels.forEach(level => {
+            const exists = window.DIRTINESS_LEVELS.some(existing => 
+              (typeof existing === 'string' && existing === level) ||
+              (typeof existing === 'object' && (existing.value === level || existing.description === level)) ||
+              (typeof level === 'object' && existing && (existing.value === level.value || existing.description === level.description))
+            );
+            if (!exists) {
+              window.DIRTINESS_LEVELS.push(level);
+            }
+          });
+        }
       }
       // Backward compatibility: also check metadata
       if (data.metadata && data.metadata.roomTypes) {
@@ -1733,7 +1762,17 @@ async function loadNewFormData() {
         window.ADDITIONAL_SERVICES = data.metadata.additionalServices;
       }
       if (data.metadata && data.metadata.dirtinessLevels) {
-        window.DIRTINESS_LEVELS = data.metadata.dirtinessLevels;
+        // Merge metadata dirtiness levels with existing
+        data.metadata.dirtinessLevels.forEach(level => {
+          const exists = window.DIRTINESS_LEVELS.some(existing => 
+            (typeof existing === 'string' && existing === level) ||
+            (typeof existing === 'object' && (existing.value === level || existing.description === level)) ||
+            (typeof level === 'object' && existing && (existing.value === level.value || existing.description === level.description))
+          );
+          if (!exists) {
+            window.DIRTINESS_LEVELS.push(level);
+          }
+        });
       }
       
       // Add room type, service type, and equipment translations to global TRANSLATIONS
@@ -2020,7 +2059,17 @@ function parseNewMetadata(metadata) {
   }
   
   if (metadata.dirtinessLevels) {
-    window.DIRTINESS_LEVELS = [...new Set([...window.DIRTINESS_LEVELS, ...metadata.dirtinessLevels])];
+    // Merge dirtiness levels, preserving objects with translations
+    metadata.dirtinessLevels.forEach(level => {
+      const exists = window.DIRTINESS_LEVELS.some(existing => 
+        (typeof existing === 'string' && existing === level) ||
+        (typeof existing === 'object' && (existing.value === level || existing.description === level)) ||
+        (typeof level === 'object' && existing && (existing.value === level.value || existing.description === level.description))
+      );
+      if (!exists) {
+        window.DIRTINESS_LEVELS.push(level);
+      }
+    });
   }
 }
 
@@ -2667,10 +2716,12 @@ function removeRoomNew(index) {
 }
 
 function addCarpetNew() {
+  const defaultDirtiness = DIRTINESS_LEVELS[0];
+  const dirtinessValue = typeof defaultDirtiness === 'string' ? defaultDirtiness : (defaultDirtiness.description || defaultDirtiness.value || '');
   window.newFormState.carpets.push({
     width: 0,
     length: 0,
-    dirtiness: DIRTINESS_LEVELS[0]
+    dirtiness: dirtinessValue
   });
   renderCarpetsNew();
   window.calculateNewFormPrice();
@@ -2816,12 +2867,21 @@ function calculateNewFormPrice() {
     }
   });
   
-  // Carpets pricing (based on area)
+  // Carpets pricing (based on area and dirtiness level)
   if (window.CARPET_ITEMS && window.CARPET_ITEMS.length > 0) {
-    const carpetRate = window.CARPET_ITEMS[0].pricePerSqm;
     window.newFormState.carpets.forEach(carpet => {
-      const area = carpet.width * carpet.length;
-      total += area * carpetRate;
+      if (carpet.width && carpet.length && carpet.dirtiness) {
+        // Find the carpet item that matches the dirtiness level
+        const carpetItem = window.CARPET_ITEMS.find(item => 
+          item.description === carpet.dirtiness || 
+          item.value === carpet.dirtiness ||
+          item.label === carpet.dirtiness
+        );
+        if (carpetItem && carpetItem.pricePerSqm) {
+          const area = carpet.width * carpet.length;
+          total += area * carpetItem.pricePerSqm;
+        }
+      }
     });
   }
   
