@@ -2870,16 +2870,20 @@ function calculateNewFormPrice() {
   // Carpets pricing (based on area and dirtiness level)
   if (window.CARPET_ITEMS && window.CARPET_ITEMS.length > 0) {
     window.newFormState.carpets.forEach(carpet => {
-      if (carpet.width && carpet.length && carpet.dirtiness) {
+      if (carpet.width !== undefined && carpet.length !== undefined && carpet.width !== null && carpet.length !== null && carpet.dirtiness) {
         // Find the carpet item that matches the dirtiness level
         const carpetItem = window.CARPET_ITEMS.find(item => 
           item.description === carpet.dirtiness || 
           item.value === carpet.dirtiness ||
           item.label === carpet.dirtiness
         );
-        if (carpetItem && carpetItem.pricePerSqm) {
+        if (carpetItem && carpetItem.pricePerSqm !== undefined && carpetItem.pricePerSqm !== null) {
           const area = carpet.width * carpet.length;
-          total += area * carpetItem.pricePerSqm;
+          const carpetPrice = area * carpetItem.pricePerSqm;
+          appLog('Carpet price:', carpetPrice, 'area:', area, 'rate:', carpetItem.pricePerSqm, 'dirtiness:', carpet.dirtiness);
+          total += carpetPrice;
+        } else {
+          appLog('WARNING: No carpet item found for dirtiness:', carpet.dirtiness, 'Available:', window.CARPET_ITEMS.map(i => i.description));
         }
       }
     });
