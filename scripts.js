@@ -21,58 +21,57 @@ const TRANSLATIONS = {
     "nav_prices": "Prices",
     "nav_coverage": "Service Area",
     "nav_contact": "Contact",
-    "nav_contact_btn": "Get a Quote",
+    "nav_contact_btn": "Price Estimate",
     "hero_badge": "Art of Purity",
     "hero_desc": "Premium VIP cleaning services. We ensure harmony in your most intimate surroundings through meticulous, invisible care.",
-    "focus_title": "Our Focus",
+    "focus_title": "Our Mission",
     "focus_desc": "We believe that a clean space is a silent sanctuary. Our services are tailored to the needs of those who value excellence over standard utility.",
     "service_1_badge": "01. Residential",
-    "service_1_title": "Residential Interior",
-    "service_1_desc": "Detail cleaning for private houses, summer houses, flats, and residences where you reside constantly or occasionally.",
-    "service_2_badge": "02. Commercial",
-    "service_2_title": "Small Commercial",
+    "service_1_title": "Residential Spaces",
+    "service_1_desc": "Cleaning of private houses, summer houses, flats, and residences where you reside constantly or occasionally.",
+    "service_2_badge": "02. Commercial Spaces",
+    "service_2_title": "Small Businesses",
     "service_2_desc": "Constant hygienic maintenance for offices, shops, hairdressers, and similar spaces with frequent external visitors.",
     "service_3_badge": "03. Upholstery",
-    "service_3_title": "Premium Upholstery & Carpet Care",
-    "service_3_desc": "Specialized deep extraction cleaning for couches, chairs, armchairs, mattresses, and carpets using professional, eco-friendly products.",
+    "service_3_title": "Professional Care for Upholstery & Carpets",
+    "service_3_desc": "Specialized deep extraction cleaning for couches, chairs, armchairs, mattresses, and carpets using professional chemical solutions and high-power vacuum cleaners.",
     "prices_title": "Pricing",
     "prices_desc": "We offer transparent, value-based pricing models. Each project is unique, requiring a customized precision plan.",
-    "price_1_title": "Comprehensive Cleaning",
-    "price_1_desc": "Complete interior cleaning for maintained spaces. Focus on harmony and pristine surfaces.",
-    "price_2_title": "General Cleaning",
+    "price_1_title": "Basic Cleaning",
+    "price_1_desc": "Complete interior cleaning for maintained spaces.",
+    "price_2_title": "Comprehensive Cleaning",
     "price_2_desc": "Intensive restoration for spaces requiring surgical attention. Includes appliances and hidden corners.",
     "price_3_title": "Post-Renovation Cleaning",
-    "price_3_desc": "Recurring maintenance for villas and boutiques. Dedicated professional assigned to your space.",
-    "price_4_title": "Upholstery and Carpet Cleaning",
-    "price_4_desc": "We use 4.5-atmosphere water vacuums and pro-grade cleaners to tackle tough stains like pet accidents, food spills, ink, and even blood (though some spots can be tricky).",
-    "price_4_includes": "2-seat couch and two small pillows.",
-    "price_5_title": "Commercial Cleaning",
+    "price_3_desc": "Includes deep cleaning of all effected surfaces. Less about grease, but more about dust and paint stains.",
+    "price_4_title": "Upholstery & Carpet Cleaning",
+    "price_4_desc": "95% of orders are simply for a refresh. However, if needed, we have powerful 4.5-atmosphere water vacuums and pro-grade cleaners to tackle tough stains like pet accidents, food spills, ink, and even blood (though some spots can be tricky).",
+    "price_4_includes": "2-seat couch and 2 small pillows.",
+    "price_5_title": "Commercial Spaces",
     "price_5_desc": "Keep your office, salon, or retail space spotless. We provide deep, hygienic cleaning for high-traffic areas where cleanliness matters most.",
-    "price_5_includes": "Full sanitization and maintenance tailored to your business needs.",
-    "price_popular_tag": "Most Popular",
-    "price_base_package": "Base Package (1 room, kitchen, bathroom, hallway)",
-    "price_post_renovation": "Post-Renovation Cleaning",
+    "price_5_includes": " ",
+    "price_base_package": "1 room, kitchen, bathroom, hallway",
+    "price_post_renovation": " ",
     "price_unit_sqm": "/ sqr.m.",
-    "prices_discount_title": "The Detail Discount",
+    "prices_discount_title": " ",
     "prices_discount_desc": "",
     "coverage_title": "Service Area",
-    "coverage_desc": "We provide our elite VIP cleaning services in the following regions.",
-    "coverage_1_title": "Zone 1 (Łódź Districts)",
-    "coverage_1_desc": "Bałuty, Górna, Polesie, Śródmieście, Widzew.",
-    "coverage_2_title": "Zone 2 (Agglomeration Towns)",
-    "coverage_2_desc": "Zgierz, Pabianice, Konstantynów Łódzki, Aleksandrów Łódzki, Rzgów, Ksawerów, Andrespol, Nowosolna.",
-    "coverage_3_title": "Nationwide",
-    "coverage_3_desc": "Specialized power washing and boutique projects",
+    "coverage_desc": "We provide our elite cleaning services in the following regions.",
+    "coverage_1_title": "Łódź",
+    "coverage_1_desc": "Stare Bałuty, Bałuty, Górna, Górna, Politechnika Łódzka, Fabryczna, Polesie, Śródmieście, Widzew, Retkinia, Dąbrowa, Marysin Doły, Julianów, Chojny, Rokicie, Nowe Rokicie, Centrum, Radiostacja, Niciarniana, Koziny, Źubardź.",
+    "coverage_2_title": "Agglomeration Towns",
+    "coverage_2_desc": "Zgierz, Pabianice, Konstantynów Łódzki, Aleksandrów Łódzki, Rzgów, Ksawerów, Andrespol, Nowosolna (coverage may be incomplete)",
+    "coverage_3_title": " ",
+    "coverage_3_desc": " ",
     "onboarding_title": "How it works",
-    "map_zone1_title": "Zone 1 (Łódź Districts)",
+    "map_zone1_title": "Łódź",
     "map_zone1_desc": "Bałuty, Górna, Polesie, Śródmieście, Widzew.",
-    "map_zone2_title": "Zone 2 (Agglomeration Towns)",
+    "map_zone2_title": "Agglomeration Towns",
     "map_zone2_desc": "Zgierz, Pabianice, Konstantynów Łódzki, Aleksandrów Łódzki, Rzgów, Ksawerów, Andrespol, Nowosolna.",
     "step_1": "Request",
     "step_2": "Confirmation of Receipt",
     "step_3": "First Consultation",
     "step_4": "Scheduling",
-    "step_5": "Confirmation Visit*",
+    "step_5": "Confirmation Visit",
     "step_6": "Actual Service",
     "step_7": "Feedback",
     "feedback_title": "Customer Feedback",
@@ -82,14 +81,14 @@ const TRANSLATIONS = {
     "feedback_2_text": "\"The only service I trust with my boutique gallery in Łódź. Silent, meticulous, and professional beyond expectations.\"",
     "feedback_2_author": "— Marek V., Łódź",
     "feedback_3_text": "\"Absolute peace of mind. They don't just clean; they elevate the entire atmosphere. My private retreat is now truly private.\"",
-    "feedback_3_author": "— Elena S., Private Client",
-    "contact_title": "Start your journey to absolute calm",
-    "contact_desc": "Based on your requirements, we will design a personalized VIP cleaning plan for your space. Precision is our signature.",
+    "feedback_3_author": "— Elena S., Łódź",
+    "contact_title": "How it works",
+    "contact_desc": "",
     "estimate_form_title": "Get Your Estimate",
     "location_advice_title": "Discovery Consultation",
-    "location_advice_desc": "Providing your specific location allows us to optimize logistics and offer exclusive early-access windows in your area.",
+    "location_advice_desc": "",
     "serviceability_action": "Check My Location",
-    "serviceability_helper": "Share your location or enter a postal code below. If the address is covered, you can book immediately and get an estimate.",
+    "serviceability_helper": "Share your location or enter a postal code below. Providing your specific location allows us to optimize logistics and transportation for the staff.",
     "serviceability_status_default": "Use the location button or enter a postal code to verify serviceability.",
     "serviceability_status_restored": "Your location is inside our service area.",
     "serviceability_status_loading": "Service data is still loading. Try again in a moment.",
@@ -140,23 +139,20 @@ const TRANSLATIONS = {
     "service_comprehensive": "Comprehensive Cleaning",
     "service_general": "General Cleaning",
     "service_specialized": "Specialized Cleaning",
-    "form_rooms": "Rooms & Areas",
+    "form_rooms": "Rooms",
     "form_add_room": "Add Room",
-    "form_furniture": "Soft Furniture & Carpets",
+    "form_furniture": "Furniture",
     "form_add_furniture": "Add Furniture",
     "form_add_mattress": "Add Mattress",
     "form_add_carpet": "Add Carpet",
-    "form_additional": "Additional Services",
+    "form_additional": "Services",
     "form_delivery": "Transportation",
     "form_total": "Total",
     "form_review": "Book Service",
     "form_confirm": "Confirm Booking",
     "form_contact_details": "Contact Details",
-    "form_rooms": "Rooms",
-    "form_furniture": "Furniture",
     "form_carpets_mattresses": "Carpets & Mattresses",
     "form_windows": "Windows",
-    "form_additional": "Services",
     "carpet_width": "Width (m)",
     "carpet_length": "Length (m)",
     "carpet_dirtiness": "Dirtiness",
@@ -167,30 +163,22 @@ const TRANSLATIONS = {
     "form_no_carpets": "No carpets added yet",
     "form_mattress_type": "Mattress Type",
     "form_select_room_type": "Select Room Type",
-
-    "form_add_room": "Add Room",
     "form_room_equipment": "Room Equipment",
     "form_service_type": "Service Type",
     "form_soft_furniture": "Soft Furniture",
     "form_carpets": "Carpets",
     "form_mattresses": "Mattresses",
-    "form_add_carpet": "Add Carpet",
-    "form_add_mattress": "Add Mattress",
     "form_windows_count": "Number of Windows",
-    "form_additional_services": "Additional Services",
-    "form_zip": "Postal Code",
-    "form_review": "Book Service",
-    "form_confirm": "Confirm Booking",
-    "form_total": "Total",
+    "form_area_outside": "Outside service area",
+    "form_area_available": "Service available",
     "form_approximate_cost_note": "* The displayed cost is approximate",
     "form_address_placeholder": "Address",
     "form_name_placeholder": "Full Name",
     "form_phone_placeholder": "Phone",
     "form_email_placeholder": "Email",
     "form_hide_contact": "Hide Contact Form",
-    "success_title": "Thank You",
-    "success_desc": "Your inquiry has been received. We will reach out to you shortly to provide VIP standards for your space.",
-    "form_offline_message": "The form is currently offline. Please give us a call at +48452414234"
+    "form_offline_message": "The form is currently offline. Please give us a call at +48452414234",
+    "price_popular_tag": "Most Popular"
   },
   "pl": {
     "nav_home": "Start",
@@ -205,51 +193,50 @@ const TRANSLATIONS = {
     "focus_desc": "Wierzymy, że czysta przestrzeń to cicha świątynia. Nasze usługi są skrojone na miarę potrzeb tych, którzy cenią doskonałość.",
     "service_1_badge": "01. Rezydencje",
     "service_1_title": "Wnętrza Mieszkalne",
-    "service_1_desc": "Szczegółowe sprzątanie domów prywatnych, domków letniskowych, mieszkań i rezydencji, w których przebywasz na stałe lub okazjonalnie.",
-    "service_2_badge": "02. Komercyjne",
+    "service_1_desc": "Sprzątanie domów prywatnych, domków letniskowych, mieszkań i rezydencji, w których przebywasz na stałe lub okazjonalnie.",
+    "service_2_badge": "02. Komercyjne Mieszkanie",
     "service_2_title": "Małe Powierzchnie Komercyjne",
     "service_2_desc": "Stałe utrzymanie higieny dla biur, sklepów, salonów fryzjerskich i innych miejsc odwiedzanych przez wielu klientów.",
     "service_3_badge": "03. Tapicerki",
     "service_3_title": "Profesjonalne Pranie",
-    "service_3_desc": "Specjalistyczne pranie na mokro kanap, krzeseł, foteli, materacy i dywanów przy użyciu profesjonalnego, ekologicznego sprzętu i środków.",
+    "service_3_desc": "Specjalistyczne pranie na mokro kanap, krzeseł, foteli, materacy i dywanów przy użyciu profesjonalnego sprzętu i chemicznych środków.",
     "prices_title": "Cennik",
     "prices_desc": "Oferujemy przejrzyste, oparte na wartości modele cenowe. Każdy projekt jest wyjątkowy.",
-    "price_1_title": "Kompleksowe Sprzątanie",
-    "price_1_desc": "Kompletne czyszczenie wnętrz dla utrzymanych przestrzeni. Koncentracja na harmonii i nieskazitelnych powierzchniach.",
+    "price_1_title": "Podstawowe Sprzątanie",
+    "price_1_desc": "Kompletne czyszczenie wnętrz dla utrzymanych przestrzeni.",
     "price_2_title": "Sprzątanie Ogólne",
     "price_2_desc": "Intensywna renowacja dla przestrzeni wymagających chirurgicznej uwagi. Obejmuje urządzenia i ukryte zakamarki.",
     "price_3_title": "Sprzątanie po Remoncie",
-    "price_3_desc": "Cykliczna konserwacja dla willi i butików. Dedykowany specjalista przypisany do Twojej przestrzeni.",
+    "price_3_desc": "Obejmuje gruntowne czyszczenie wszystkich dotkniętych tym powierzchni. Chodzi tu mniej o tłuszcz, a bardziej o kurz i ślady farby.",
     "price_4_title": "Pranie tapicerki i dywanów",
-    "price_4_desc": "Używamy odkurzaczy wodnych o sile 4,5 atmosfery i profesjonalnej chemii, by usunąć trudne plamy, takie jak mocz zwierząt, jedzenie, markery czy krew (choć przy krwi nie dajemy 100% gwarancji).",
-    "price_4_includes": "Kanapa 2-osobowa i dwie małe poduszki.",
-    "price_5_title": "Sprzątanie komercyjne",
+    "price_4_desc": "95% zamówień dotyczy jedynie odświeżenia. W razie potrzeby dysponujemy jednak wydajnymi odkurzaczami oraz profesjonalnej chemii, by usunąć trudne plamy, takie jak mocz zwierząt, jedzenie, markery czy krew (choć nie możemy zagwarantować jej całkowitego usunięcia).",
+    "price_4_includes": "Kanapa 2-osobowa i 2 małe poduszki.",
+    "price_5_title": "Komercyjne Mieszkanie",
     "price_5_desc": "Zadbaj o higienę w biurze, salonie lub lokalu. Zapewniamy profesjonalne sprzątanie miejsc o dużym natężeniu ruchu, gdzie czystość to podstawa.",
-    "price_5_includes": "Kompleksowa dezynfekcja i utrzymanie czystości dostosowane do Twojego biznesu.",
-    "price_popular_tag": "Najpopularniejszy",
-    "price_base_package": "Pakiet podstawowy (1 pokój, kuchnia, łazienka, korytarz)",
-    "price_post_renovation": "Sprzątanie po remoncie",
+    "price_5_includes": " ",
+    "price_base_package": "1 pokój, kuchnia, łazienka, korytarz",
+    "price_post_renovation": " ",
     "price_unit_sqm": "/ mkw.",
-    "prices_discount_title": "Zniżka za Szczegóły",
+    "prices_discount_title": " ",
     "prices_discount_desc": "",
-    "coverage_title": "Obszar Działań",
-    "coverage_desc": "Świadczymy nasze elitarne usługi sprzątania VIP w następujących regionach.",
-    "coverage_1_title": "Strefa 1 (Dzielnice Łodzi)",
-    "coverage_1_desc": "Bałuty, Górna, Polesie, Śródmieście, Widzew.",
-    "coverage_2_title": "Strefa 2 (Miejscowości Aglomeracji)",
-    "coverage_2_desc": "Zgierz, Pabianice, Konstantynów Łódzki, Aleksandrów Łódzki, Rzgów, Ksawerów, Andrespol, Nowosolna.",
-    "coverage_3_title": "Cała Polska",
-    "coverage_3_desc": "Specjalistyczne mycie ciśnieniowe i projekty butikowe",
+    "coverage_title": "Zasięg",
+    "coverage_desc": "Świadczymy nasze elitarne usługi sprzątania w następujących regionach.",
+    "coverage_1_title": "Łodzi",
+    "coverage_1_desc": "Stare Bałuty, Bałuty, Górna, Górna, Politechnika Łódzka, Fabryczna, Polesie, Śródmieście, Widzew, Retkinia, Dąbrowa, Marysin Doły, Julianów, Chojny, Rokicie, Nowe Rokicie, Centrum, Radiostacja, Niciarniana, Koziny, Źubardź.",
+    "coverage_2_title": "Miejscowości Aglomeracji",
+    "coverage_2_desc": "Zgierz, Pabianice, Konstantynów Łódzki, Aleksandrów Łódzki, Rzgów, Ksawerów, Andrespol, Nowosolna (zakres może być niepełny)",
+    "coverage_3_title": " ",
+    "coverage_3_desc": " ",
     "onboarding_title": "Jak to działa",
-    "map_zone1_title": "Strefa 1 (Dzielnice Łodzi)",
+    "map_zone1_title": "Dzielnice Łodzi",
     "map_zone1_desc": "Bałuty, Górna, Polesie, Śródmieście, Widzew.",
-    "map_zone2_title": "Strefa 2 (Miejscowości Aglomeracji)",
+    "map_zone2_title": "Miejscowości Aglomeracji",
     "map_zone2_desc": "Zgierz, Pabianice, Konstantynów Łódzki, Aleksandrów Łódzki, Rzgów, Ksawerów, Andrespol, Nowosolna.",
     "step_1": "Zapytanie",
     "step_2": "Potwierdzenie otrzymania",
     "step_3": "Pierwsza konsultacja",
     "step_4": "Harmonogram",
-    "step_5": "Wizyta wstępna*",
+    "step_5": "Wizyta wstępna",
     "step_6": "Realizacja usługi",
     "step_7": "Opinia",
     "feedback_title": "Opinie Klientów",
@@ -259,14 +246,14 @@ const TRANSLATIONS = {
     "feedback_2_text": "\"Jedyna usługa, której ufam w mojej butikowej galerii w Łodzi. Cicha, skrupulatna i profesjonalna ponad oczekiwania.\"",
     "feedback_2_author": "— Marek V., Łódź",
     "feedback_3_text": "\"Absolutny spokój ducha. Oni nie tylko sprzątają; podnoszą atmosferę całego miejsca. Mój dom jest teraz naprawdę prywatny.\"",
-    "feedback_3_author": "— Elena S., Klient Prywatny",
-    "contact_title": "Zacznij podróż do spokoju",
-    "contact_desc": "Na podstawie Twoich wymagań zaprojektujemy spersonalizowany plan sprzątania VIP. Precyzja to nasz podpis.",
+    "feedback_3_author": "— Elena S., Łódź",
+    "contact_title": "Jak to działa",
+    "contact_desc": "",
     "estimate_form_title": "Otrzymaj wycenę",
     "location_advice_title": "Konsultacja Wstępna",
-    "location_advice_desc": "Podanie konkretnej lokalizacji pozwala nam zoptymalizować logistykę i zaoferować ekskluzywne terminy.",
+    "location_advice_desc": "",
     "serviceability_action": "Sprawdź moją lokalizację",
-    "serviceability_helper": "Udostępnij lokalizację albo wpisz kod pocztowy poniżej. Jeśli adres jest w zasięgu, możesz od razu zarezerwować usługę i dostać wycenę.",
+    "serviceability_helper": "Udostępnij lokalizację albo wpisz kod pocztowy poniżej. Podanie konkretnej lokalizacji pozwala nam zoptymalizować logistykę i transport pracowników.",
     "serviceability_status_default": "Użyj przycisku lokalizacji lub wpisz kod pocztowy, aby sprawdzić dostępność usługi.",
     "serviceability_status_restored": "Twoja lokalizacja mieści się w naszym obszarze.",
     "serviceability_status_loading": "Dane strefy wciąż się ładują. Spróbuj ponownie za chwilę.",
@@ -279,7 +266,7 @@ const TRANSLATIONS = {
     "serviceability_status_postal_format": "Wpisz kod pocztowy w formacie 90-123.",
     "serviceability_status_postal_match": "Kod pocztowy mieści się w naszym obszarze.",
     "serviceability_status_postal_miss": "Ten kod pocztowy jest poza naszym aktualnym obszarem usług.",
-    "form_zip": "Kod Pocztowy",
+    "form_zip": "Kod pocztowy",
     "form_area": "Nazwa obszaru",
     "form_street": "Nazwa ulicy (opcjonalnie)",
     "form_fullname": "Imię i nazwisko",
@@ -317,24 +304,20 @@ const TRANSLATIONS = {
     "service_comprehensive": "Kompleksowe Sprzątanie",
     "service_general": "Sprzątanie Ogólne",
     "service_specialized": "Sprzątanie Specjalistyczne",
-    "form_rooms": "Pomieszczenia i Obszary",
-    "form_add_room": "Dodaj Pomieszczenie",
-    "form_furniture": "Miękkie Meble i Dywany",
+    "form_rooms": "Pomieszczenia",
+    "form_add_room": "Dodaj pomieszczenie",
+    "form_furniture": "Meble",
     "form_add_furniture": "Dodaj Mebel",
-    "form_add_mattress": "Dodaj Materac",
-    "form_add_carpet": "Dodaj Dywan",
-    "form_additional": "Dodatkowe Usługi",
+    "form_add_mattress": "Dodaj materac",
+    "form_add_carpet": "Dodaj dywan",
+    "form_additional": "Usługi",
     "form_delivery": "Transport",
     "form_total": "Razem",
-    "form_review": "Zamów Usługę",
+    "form_review": "Zamów usługę",
     "form_confirm": "Potwierdź rezerwację",
     "form_contact_details": "Dane Kontaktowe",
-    "form_rooms": "Pomieszczenia",
-    "form_furniture": "Meble",
     "form_carpets_mattresses": "Dywany i Materace",
     "form_windows": "Okna",
-    "form_additional": "Usługi",
-    "form_select_room_type": "Wybierz typ pomieszczenia",
     "carpet_width": "Szerokość (m)",
     "carpet_length": "Długość (m)",
     "carpet_dirtiness": "Zabrudzenie",
@@ -344,34 +327,28 @@ const TRANSLATIONS = {
     "dirtiness_level_very_heavy": "Bardzo silne",
     "form_no_carpets": "Nie dodano jeszcze żadnych dywanów",
     "form_mattress_type": "Rodzaj materaca",
-    "form_no_mattresses": "Nie dodano jeszcze żadnych materacy",
-    "mattress_type_single_both_sides": "Pojedynczy - Obie strony",
-    "mattress_type_single_one_side": "Pojedynczy - Jedna strona",
-    "mattress_type_twin_both_sides": "Podwójny - Obie strony",
-    "mattress_type_twin_one_side": "Podwójny - Jedna strona",
-    "form_add_room": "Dodaj pomieszczenie",
+    "form_select_room_type": "Wybierz typ pomieszczenia",
     "form_room_equipment": "Wyposażenie pomieszczenia",
     "form_service_type": "Typ usługi",
     "form_soft_furniture": "Miękkie meble",
     "form_carpets": "Dywany",
     "form_mattresses": "Materace",
-    "form_add_carpet": "Dodaj dywan",
-    "form_add_mattress": "Dodaj materac",
     "form_windows_count": "Liczba okien",
-    "form_additional_services": "Usługi dodatkowe",
-    "form_zip": "Kod pocztowy",
-    "form_review": "Zamów usługę",
-    "form_confirm": "Potwierdź rezerwację",
-    "form_total": "Razem",
+    "form_area_outside": "Poza obszarem usług",
+    "form_area_available": "Usługa dostępna",
     "form_approximate_cost_note": "* Wyświetlony koszt jest przybliżony",
     "form_address_placeholder": "Adres",
     "form_name_placeholder": "Imię i nazwisko",
     "form_phone_placeholder": "Numer telefonu",
     "form_email_placeholder": "Email",
     "form_hide_contact": "Ukryj formularz kontaktowy",
-    "success_title": "Dziękujemy",
-    "success_desc": "Twoje zapytanie zostało odebrane. Skontaktujemy się wkrótce, aby zapewnić standard VIP dla Twojej przestrzeni.",
-    "form_offline_message": "Formularz jest obecnie niedostępny. Prosimy o kontakt telefoniczny pod numerem +48452414234"
+    "form_offline_message": "Formularz jest obecnie niedostępny. Prosimy o kontakt telefoniczny pod numerem +48452414234",
+    "price_popular_tag": "Najpopularniejszy",
+    "form_no_mattresses": "Nie dodano jeszcze żadnych materacy",
+    "mattress_type_single_both_sides": "Pojedynczy - Obie strony",
+    "mattress_type_single_one_side": "Pojedynczy - Jedna strona",
+    "mattress_type_twin_both_sides": "Podwójny - Obie strony",
+    "mattress_type_twin_one_side": "Podwójny - Jedna strona"
   },
   "ru": {
     "nav_home": "Главная",
@@ -379,75 +356,74 @@ const TRANSLATIONS = {
     "nav_prices": "Цены",
     "nav_coverage": "Зона Обслуживания",
     "nav_contact": "Контакт",
-    "nav_contact_btn": "Запросить цену",
+    "nav_contact_btn": "Оцени Стоимость",
     "hero_badge": "Искусство Чистоты",
-    "hero_desc": "Элитные услуги VIP-уборки. Мы обеспечиваем гармонию в вашем окружении с безупречной точностью.",
+    "hero_desc": "Услуги уборки элитного уровня. Мы обеспечиваем гармонию в вашем окружении с безупречной точностью.",
     "focus_title": "Наша Миссия",
     "focus_desc": "Мы верим, что чистое пространство — это тихая обитель. Наши услуги адаптированы под нужды тех, кто ценит совершенство.",
     "service_1_badge": "01. Резиденции",
-    "service_1_title": "Жилые Интерьеры",
-    "service_1_desc": "Детальная уборка частных домов, дач, квартир и резиденций для вашего постоянного или сезонного проживания.",
-    "service_2_badge": "02. Коммерция",
+    "service_1_title": "Жилые Пространства",
+    "service_1_desc": "Уборка частных домов, дач, квартир и резиденций для вашего постоянного или сезонного проживания.",
+    "service_2_badge": "02. Коммерческие Пространства",
     "service_2_title": "Малый Бизнес",
-    "service_2_desc": "Регулярное поддержание гигиены в офисах, магазинах, парикмахерских и других пространствах с высокой посещаемостью.",
+    "service_2_desc": "Регулярное поддержание чистоты и гигиены в офисах, магазинах, парикмахерских и других пространствах с высокой посещаемостью.",
     "service_3_badge": "03. Мягкая Мебель",
     "service_3_title": "Профессиональная Химчистка",
-    "service_3_desc": "Специализированная влажная чистка диванов, стульев, кресел, матрасов и ковров с использованием профессиональных и экологичных средств.",
+    "service_3_desc": "Специализированная влажная чистка диванов, стульев, кресел, матрасов и ковров с использованием профессиональных химических средств и оборудования.",
     "prices_title": "Цены",
     "prices_desc": "Прозрачные модели ценообразования. Каждый проект уникален.",
-    "price_1_title": "Поддерживающая уборка",
-    "price_1_desc": "Полная внутренняя уборка для поддерживаемых помещений. Сосредоточение на гармонии и чистоте.",
+    "price_1_title": "Поддерживающая Уборка",
+    "price_1_desc": "Полная внутренняя уборка для помещений под постоянным присмотром.",
     "price_2_title": "Генеральная уборка",
-    "price_2_desc": "Интенсивная реновация для пространств, требующих хирургического внимания.",
-    "price_3_title": "Уборка после ремонта",
-    "price_3_desc": "Регулярное обслуживание вилл и бутиков. Выделенный специалист для вашего пространства.",
+    "price_2_desc": "Интенсивная чистка пространств, требующих хирургического внимания. Включает в себя чистку техники и тайных закутков.",
+    "price_3_title": "Уборка После Ремонта",
+    "price_3_desc": "Включает глубокую очистку всех затронутых поверхностей. Основное внимание уделяется не столько жировым загрязнениям, сколько пыли и пятнам краски.",
     "price_4_title": "Чистка мягкой мебели и ковров",
-    "price_4_desc": "Мощные пылесосы (4,5 атм) и профессиональная химия справятся с любыми пятнами: от еды и маркеров до мочи животных и даже крови (без гарантии полного удаления).",
-    "price_4_includes": "Двухместный диван и две маленькие подушки.",
-    "price_5_title": "Коммерческая уборка",
+    "price_4_desc": "95% заказов - просто освежить. Но если нужно, у нас есть мощные пылесосы (4,5 атм) и профессиональная химия, которые справятся с любыми пятнами: от еды и маркеров до мочи животных и даже крови (без гарантии полного удаления).",
+    "price_4_includes": "2-х местный диван и 2 маленькие подушки.",
+    "price_5_title": "Коммерческие Пространства",
     "price_5_desc": "Безупречная чистота для офисов, салонов и магазинов. Мы обеспечиваем высокий стандарт гигиены в помещениях с большой проходимостью.",
-    "price_5_includes": "Профессиональная санитарная обработка и поддержание порядка для вашего бизнеса.",
-    "price_popular_tag": "Самый популярный",
-    "price_base_package": "Базовый пакет (1 комната, кухня, ванная, коридор)",
-    "price_post_renovation": "Уборка после ремонта",
+    "price_5_includes": " ",
+    "price_base_package": "1 комната, кухня, ванная, коридор",
+    "price_post_renovation": " ",
     "price_unit_sqm": "/ кв.м.",
-    "prices_discount_title": "Скидка за детали",
+    "prices_discount_title": " ",
     "prices_discount_desc": "",
-    "coverage_title": "Зона покрытия",
-    "coverage_desc": "Мы предоставляем элитные услуги VIP-уборки в следующих регионах.",
-    "coverage_1_title": "Зона 1 (Районы Лодзи)",
-    "coverage_1_desc": "Балуты, Гурна, Полесье, Сродместье, Видзев.",
-    "coverage_2_title": "Зона 2 (Города агломерации)",
-    "coverage_2_desc": "Згеж, Пабянице, Константынув-Лодзинский, Александрув-Лодзинский, Жгув, Ксаверув, Андресполь, Новосольна.",
-    "coverage_3_title": "По всей стране",
-    "coverage_3_desc": "Специализированная мойка и бутик-проекты",
+    "coverage_title": "Зона Обслуживания",
+    "coverage_desc": "Мы предоставляем элитные услуги уборки в следующих регионах.",
+    "coverage_1_title": "Лодзь",
+    "coverage_1_desc": "Stare Bałuty, Bałuty, Górna, Górna, Politechnika Łódzka, Fabryczna, Polesie, Śródmieście, Widzew, Retkinia, Dąbrowa, Marysin Doły, Julianów, Chojny, Rokicie, Nowe Rokicie, Centrum, Radiostacja, Niciarniana, Koziny, Źubardź.",
+    "coverage_2_title": "Города агломерации",
+    "coverage_2_desc": "Zgierz, Pabianice, Konstantynów Łódzki, Aleksandrów Łódzki, Rzgów, Ksawerów, Andrespol, Nowosolna (покрытие может быть не полным)",
+    "coverage_3_title": " ",
+    "coverage_3_desc": " ",
     "onboarding_title": "Как это работает",
-    "map_zone1_title": "Зона 1 (Районы Лодзи)",
-    "map_zone1_desc": "Балуты, Гурна, Полесье, Сродместье, Видзев.",
-    "map_zone2_title": "Зона 2 (Города агломерации)",
-    "map_zone2_desc": "Згеж, Пабянице, Константынув-Лодзинский, Александрув-Лодзинский, Жгув, Ксаверув, Андресполь, Новосольна.",
+    "map_zone1_title": "Районы Лодзи",
+    "map_zone1_desc": "Bałuty, Górna, Polesie, Śródmieście, Widzew.",
+    "map_zone2_title": "Города агломерации",
+    "map_zone2_desc": "Zgierz, Pabianice, Konstantynów Łódzki, Aleksandrów Łódzki, Rzgów, Ksawerów, Andrespol, Nowosolna.",
     "step_1": "Запрос",
     "step_2": "Подтверждение получения",
     "step_3": "Первая консультация",
     "step_4": "Согласование графика",
-    "step_5": "Предварительный визит*",
+    "step_5": "Предварительный визит",
     "step_6": "Оказание услуги",
     "step_7": "Обратная связь",
     "feedback_title": "Отзывы",
-    "feedback_desc": "Что говорят наши клиенты об опыте работы с Akkuratistki.",
+    "feedback_desc": "Что говорят наши клиенты об опыте работы с Аккуратистками.",
     "feedback_1_text": "\"Их внимание к деталям поистине беспрецедентно. Мой дом никогда не казался таким гармоничным и спокойным. Мастер-класс по профессиональной уборке.\"",
     "feedback_1_author": "— Анна К., Варшава",
     "feedback_2_text": "\"Единственный сервис, которому я доверяю свою бутик-галерею в Лодзи. Тихая, тщательная и профессиональная работа.\"",
     "feedback_2_author": "— Marek V., Łódź",
     "feedback_3_text": "\"Абсолютное спокойствие. Они не просто убирают; они меняют всю атмосферу. Мой частный дом теперь действительно стал уютным.\"",
-    "feedback_3_author": "— Elena S., Частный клиент",
-    "contact_title": "Путь к спокойствию",
-    "contact_desc": "Мы разработаем индивидуальный план VIP-уборки для вашего пространства. Аккуратность — наша подпись.",
+    "feedback_3_author": "— Elena S., Łódź",
+    "contact_title": "Как это работает",
+    "contact_desc": "",
     "estimate_form_title": "Получить оценку",
     "location_advice_title": "Консультация",
-    "location_advice_desc": "Локация помогает нам оптимизировать логистику и предложить лучшие окна доступа.",
+    "location_advice_desc": "",
     "serviceability_action": "Проверить мою локацию",
-    "serviceability_helper": "Разрешите доступ к геолокации или введите почтовый индекс ниже. Если адрес обслуживается, вы сможете сразу забронировать услугу и получить оценку.",
+    "serviceability_helper": "Разрешите доступ к геолокации или введите почтовый индекс ниже. Локация помогает нам оптимизировать логистику и транспорт для сотрудников.",
     "serviceability_status_default": "Используйте кнопку геолокации или введите почтовый индекс, чтобы проверить доступность.",
     "serviceability_status_restored": "Вы в зоне обслуживания.",
     "serviceability_status_loading": "Данные зоны ещё загружаются...",
@@ -498,24 +474,20 @@ const TRANSLATIONS = {
     "service_comprehensive": "Комплексная уборка",
     "service_general": "Генеральная уборка",
     "service_specialized": "Специализированная уборка",
-    "form_rooms": "Помещения и зоны",
+    "form_rooms": "Помещения",
     "form_add_room": "Добавить помещение",
-    "form_furniture": "Мягкая мебель и ковры",
+    "form_furniture": "Мебель",
     "form_add_furniture": "Добавить мебель",
     "form_add_mattress": "Добавить матрас",
     "form_add_carpet": "Добавить ковер",
-    "form_additional": "Дополнительные услуги",
+    "form_additional": "Услуги",
     "form_delivery": "Транспорт",
     "form_total": "Итого",
     "form_review": "Заказать услугу",
     "form_confirm": "Подтвердить бронирование",
     "form_contact_details": "Контактные данные",
-    "form_rooms": "Помещения",
-    "form_furniture": "Мебель",
     "form_carpets_mattresses": "Ковры и матрасы",
     "form_windows": "Окна",
-    "form_additional": "Услуги",
-    "form_select_room_type": "Выберите тип помещения",
     "carpet_width": "Ширина (м)",
     "carpet_length": "Длина (м)",
     "carpet_dirtiness": "Загрязненность",
@@ -525,34 +497,28 @@ const TRANSLATIONS = {
     "dirtiness_level_very_heavy": "Очень сильное",
     "form_no_carpets": "Еще не добавлено ни одного ковра",
     "form_mattress_type": "Тип матраса",
-    "form_no_mattresses": "Еще не добавлено ни одного матраса",
-    "mattress_type_single_both_sides": "Одиночный - Две стороны",
-    "mattress_type_single_one_side": "Одиночный - Одна сторона",
-    "mattress_type_twin_both_sides": "Двойной - Две стороны",
-    "mattress_type_twin_one_side": "Двойной - Одна сторона",
-    "form_add_room": "Добавить помещение",
+    "form_select_room_type": "Выберите тип помещения",
     "form_room_equipment": "Оборудование помещения",
     "form_service_type": "Тип услуги",
     "form_soft_furniture": "Мягкая мебель",
     "form_carpets": "Ковры",
     "form_mattresses": "Матрасы",
-    "form_add_carpet": "Добавить ковер",
-    "form_add_mattress": "Добавить матрас",
     "form_windows_count": "Количество окон",
-    "form_additional_services": "Дополнительные услуги",
-    "form_zip": "Индекс",
-    "form_review": "Заказать услугу",
-    "form_confirm": "Подтвердить бронирование",
-    "form_total": "Итого",
+    "form_area_outside": "За пределами зоны обслуживания",
+    "form_area_available": "Услуга доступна",
     "form_approximate_cost_note": "* Отображаемая стоимость приблизительная",
     "form_address_placeholder": "Адрес",
     "form_name_placeholder": "Полное имя",
     "form_phone_placeholder": "Номер телефона",
     "form_email_placeholder": "Email",
     "form_hide_contact": "Скрыть форму контакта",
-    "success_title": "Спасибо",
-    "success_desc": "Запрос получен. Мы свяжемся в ближайшее время, чтобы обеспечить чистоту уровня VIP.",
-    "form_offline_message": "Форма временно недоступна. Пожалуйста, позвоните нам по телефону +48452414234"
+    "form_offline_message": "Форма временно недоступна. Пожалуйста, позвоните нам по телефону +48452414234",
+    "price_popular_tag": "Самый популярный",
+    "form_no_mattresses": "Еще не добавлено ни одного матраса",
+    "mattress_type_single_both_sides": "Одиночный - Две стороны",
+    "mattress_type_single_one_side": "Одиночный - Одна сторона",
+    "mattress_type_twin_both_sides": "Двойной - Две стороны",
+    "mattress_type_twin_one_side": "Двойной - Одна сторона"
   }
 };
 // TRANSLATIONS_END
@@ -635,25 +601,24 @@ function updateNewFormTranslations() {
     furnitureContainer.querySelectorAll('label[for^="furniture-"]').forEach(label => {
       const forId = label.getAttribute('for');
       const itemValue = forId.replace('furniture-', '');
-      const item = window.window.FURNITURE_ITEMS.find(i => i.value === itemValue);
+      const item = window.FURNITURE_ITEMS.find(i => i.value === itemValue);
       if (item) {
         const translatedLabel = getTranslatedText(item.translations, item.label);
         const span = label.querySelector('span.font-medium');
         if (span) span.textContent = translatedLabel;
+        
+        const tooltipSpan = label.querySelector('span.text-xs');
+        if (tooltipSpan) {
+          const translatedTooltip = getTranslatedText(item.translations, item.tooltip || '', 'tooltip');
+          tooltipSpan.textContent = translatedTooltip;
+        }
       }
     });
   }
   
-  // Update additional services
-  const servicesContainer = document.getElementById('additional-services-list');
-  if (servicesContainer) {
-    servicesContainer.querySelectorAll('.font-medium').forEach(span => {
-      const serviceLabel = span.textContent;
-      const service = window.window.ADDITIONAL_SERVICES.find(s => s.label === serviceLabel);
-      if (service) {
-        span.textContent = getTranslatedText(service.translations, service.label);
-      }
-    });
+  // Re-render additional services so labels come from loaded data translations
+  if (window.ADDITIONAL_SERVICES && window.ADDITIONAL_SERVICES.length > 0) {
+    populateAdditionalServices();
   }
   
   // Update room service types - re-populate from current room selection
@@ -704,6 +669,8 @@ function updateNewFormTranslations() {
     appLog('Error updating mattress translations:', e.message);
   }
   
+  // Re-render postal status text in new language
+  updatePostalStatus();
   // Update all translations for dynamically added elements
   updateTranslationsForElements(currentLang);
 }
@@ -743,11 +710,11 @@ function renderServiceabilityStatus() {
   if (!statusEl) return;
   statusEl.textContent = translate(serviceabilityState.statusKey);
   if (serviceabilityState.statusVariant === "success") {
-    statusEl.className = "text-2xl font-bold text-emerald-600 rounded-xl px-4 py-3 animate-pulse";
+    statusEl.className = "text-xl font-bold text-emerald-600 rounded-xl px-4 py-3 animate-pulse";
   } else if (serviceabilityState.statusVariant === "error") {
-    statusEl.className = "text-2xl font-bold text-rose-600 rounded-xl px-4 py-3";
+    statusEl.className = "text-xl font-bold text-rose-600 rounded-xl px-4 py-3";
   } else {
-    statusEl.className = "text-2xl font-bold text-slate-800 rounded-xl px-4 py-3";
+    statusEl.className = "text-xl font-bold text-slate-800 rounded-xl px-4 py-3";
   }
 }
 function setServiceabilityStatus(statusKey, statusVariant = "info") {
@@ -854,10 +821,9 @@ function initMapWithData(comprehensiveData) {
   // Check if map is already initialized
   if (mapContainer._leaflet_id) return;
   const map = L.map("map").setView([51.7693, 19.4705], 11);
-  L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-    subdomains: 'abcd',
-    maxZoom: 20
+  L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}", {
+    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012',
+    maxZoom: 19
   }).addTo(map);
   
   // Initialize map with the pre-loaded comprehensive data
@@ -1173,10 +1139,9 @@ function initMap() {
   // Check if map is already initialized
   if (mapContainer._leaflet_id) return;
   const map = L.map("map").setView([51.7693, 19.4705], 11);
-  L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-    subdomains: 'abcd',
-    maxZoom: 20
+  L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}", {
+    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012',
+    maxZoom: 19
   }).addTo(map);
   
   // Use global serviceState
@@ -1304,6 +1269,7 @@ window.serviceState = {
 };
 
 // New form state
+window.WINDOW_PRICE = 15;
 window.newFormState = {
   selectedSection: 'rooms',
   selectedRoomType: null,
@@ -1314,6 +1280,7 @@ window.newFormState = {
   windows: 0,
   additionalServices: [],
   postalCode: null,
+  postalEligible: false,
   deliveryCost: 0,
   deliveryDistance: 0,
   hasServices: false,
@@ -1659,6 +1626,16 @@ function initNewFormWithData(comprehensiveData) {
   if (comprehensiveData.postalCodes) {
     estimateAppData.postcodes = comprehensiveData.postalCodes;
   }
+  if (comprehensiveData.prices && comprehensiveData.prices.Windows && comprehensiveData.prices.Windows.length > 0) {
+    const stdWin = comprehensiveData.prices.Windows.find(w => w.description && w.description.toLowerCase().includes('standard')) || comprehensiveData.prices.Windows[0];
+    if (stdWin && stdWin.pricePerItem) {
+      window.WINDOW_PRICE = stdWin.pricePerItem;
+    }
+  }
+  const windowUnitPriceEl = document.getElementById('window-unit-price');
+  if (windowUnitPriceEl) {
+    windowUnitPriceEl.textContent = window.WINDOW_PRICE || 15;
+  }
   
   // Check if new form elements exist
   const formContainer = document.getElementById('form-container');
@@ -1835,11 +1812,14 @@ function setupFormInputs() {
   // Windows count input
   const windowsInput = document.getElementById('windows-count');
   if (windowsInput) {
-    windowsInput.addEventListener('change', (e) => {
-      window.newFormState.windows = parseInt(e.target.value) || 0;
+    const handleWindowsCountChange = (e) => {
+      const val = parseInt(e.target.value, 10);
+      window.newFormState.windows = isNaN(val) || val < 0 ? 0 : val;
       window.calculateNewFormPrice();
       window.checkBookServiceButton();
-    });
+    };
+    windowsInput.addEventListener('input', handleWindowsCountChange);
+    windowsInput.addEventListener('change', handleWindowsCountChange);
   }
   
   // Postal code input
@@ -2649,7 +2629,7 @@ function populateFurnitureItems() {
   
   container.innerHTML = window.FURNITURE_ITEMS.map(item => {
     const translatedLabel = getTranslatedText(item.translations, item.label);
-    const translatedTooltip = getTranslatedText(item.translations, item.tooltip || '');
+    const translatedTooltip = getTranslatedText(item.translations, item.tooltip || '', 'tooltip');
     
     return `
       <div class="border border-primary/20 rounded-lg p-3 flex items-center justify-between">
@@ -2727,7 +2707,7 @@ function populateAdditionalServices() {
   
   container.innerHTML = window.ADDITIONAL_SERVICES.map(service => {
     const translatedLabel = getTranslatedText(service.translations, service.label);
-    const translatedTooltip = getTranslatedText(service.translations, service.tooltip || '');
+    const translatedTooltip = getTranslatedText(service.translations, service.tooltip || '', 'tooltip');
     const price = service.pricePerItem || service.pricePerSqm || service.pricePerHour || 0;
     
     return `
@@ -3253,9 +3233,15 @@ function calculateNewFormPrice() {
   window.newFormState.additionalServices.forEach(serviceValue => {
     const service = window.ADDITIONAL_SERVICES.find(s => s.value === serviceValue);
     if (service) {
-      total += service.pricePerItem;
+      total += service.pricePerItem || service.pricePerSqm || service.pricePerHour || 0;
     }
   });
+  
+  // Windows pricing
+  if (window.newFormState.windows > 0) {
+    const windowUnitPrice = window.WINDOW_PRICE || 15;
+    total += window.newFormState.windows * windowUnitPrice;
+  }
   
   // Transportation cost based on postal code
   if (window.newFormState.deliveryCost) {
@@ -3296,59 +3282,84 @@ function validateAndUpdatePostalCode(postalCode) {
         window.newFormState.deliveryDistance = 0;
       }
       
+      window.newFormState.postalEligible = true;
       // Update UI to show valid state
       if (postalInput) {
         postalInput.classList.remove('border-red-500', 'border-rose-500');
         postalInput.classList.add('border-green-500', 'border-primary');
       }
-      
+      updatePostalStatus();
       // Recalculate price with delivery cost
       window.calculateNewFormPrice();
       window.checkBookServiceButton();
-      
       return true;
     } else {
       // Invalid postal code
+      window.newFormState.postalEligible = false;
       window.newFormState.deliveryCost = 0;
       window.newFormState.deliveryDistance = 0;
-      
       if (postalInput) {
         postalInput.classList.remove('border-green-500', 'border-primary');
         postalInput.classList.add('border-red-500', 'border-rose-500');
       }
-      
+      updatePostalStatus();
       // Still recalculate (without delivery cost)
       window.calculateNewFormPrice();
       window.checkBookServiceButton();
-      
       return false;
     }
   } else {
-    // No postal code data loaded yet
+    // No postal code data loaded yet — treat as not eligible
     window.newFormState.postalCode = postalCode;
+    window.newFormState.postalEligible = false;
     window.newFormState.deliveryCost = 0;
     window.newFormState.deliveryDistance = 0;
+    updatePostalStatus();
     window.calculateNewFormPrice();
     window.checkBookServiceButton();
     return null;
   }
 }
 
+/**
+ * Renders the postal-code eligibility status message under the input.
+ * Shows nothing when no code entered, red when outside, green when inside.
+ * @return {void}
+ */
+function updatePostalStatus() {
+  const el = document.getElementById('postal-status');
+  if (!el) return;
+  const code = window.newFormState.postalCode;
+  if (!code || !String(code).trim()) {
+    el.textContent = '';
+    el.className = 'text-xs text-center hidden';
+    return;
+  }
+  if (window.newFormState.postalEligible) {
+    el.textContent = translate('form_area_available');
+    el.className = 'text-xs text-center text-green-600 font-medium';
+  } else {
+    el.textContent = translate('form_area_outside');
+    el.className = 'text-xs text-center text-red-600 font-medium';
+  }
+}
+/**
+ * Enables or disables the Book Service button.
+ * Button is active only when at least one service is chosen AND the postal code is within the service area.
+ * @return {void}
+ */
 function checkBookServiceButton() {
   const btn = document.getElementById('book-service-btn');
   if (!btn) return;
-  
-  // Check if any service is selected
-  const hasServices = window.newFormState.rooms.length > 0 || 
-                     window.newFormState.furniture.length > 0 || 
-                     window.newFormState.carpets.length > 0 || 
-                     window.newFormState.mattresses.length > 0 || 
+  const hasServices = window.newFormState.rooms.length > 0 ||
+                     window.newFormState.furniture.length > 0 ||
+                     window.newFormState.carpets.length > 0 ||
+                     window.newFormState.mattresses.length > 0 ||
                      window.newFormState.windows > 0 ||
                      window.newFormState.additionalServices.length > 0;
-  
   window.newFormState.hasServices = hasServices;
-  
-  if (hasServices) {
+  const canBook = hasServices && window.newFormState.postalEligible;
+  if (canBook) {
     btn.classList.remove('bg-primary/50', 'text-white/70', 'cursor-not-allowed', 'opacity-70', 'disabled');
     btn.classList.add('bg-primary', 'text-white', 'cursor-pointer');
   } else {
@@ -3534,24 +3545,32 @@ function resetNewForm() {
 }
 
 // Helper function to get translated text
-function getTranslatedText(translations, fallback) {
+function getTranslatedText(translations, fallback, field = null) {
   if (!translations) return fallback || '';
   
   // Handle new structure where translations[lang] is an object with description field
   if (translations[currentLang] && typeof translations[currentLang] === 'object') {
+    if (field && translations[currentLang][field] !== undefined) {
+      return translations[currentLang][field];
+    }
     return translations[currentLang].description || translations[currentLang].label || fallback || '';
   }
   
   // Handle old structure where translations[lang] is a string
   if (translations[currentLang]) {
+    if (field && field !== 'description' && field !== 'label') return fallback || '';
     return translations[currentLang];
   }
   
   // Fallback to English
   if (translations.en) {
     if (typeof translations.en === 'object') {
+      if (field && translations.en[field] !== undefined) {
+        return translations.en[field];
+      }
       return translations.en.description || translations.en.label || fallback || '';
     }
+    if (field && field !== 'description' && field !== 'label') return fallback || '';
     return translations.en;
   }
   
